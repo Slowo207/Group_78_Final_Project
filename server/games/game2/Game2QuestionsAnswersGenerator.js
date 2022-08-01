@@ -45,7 +45,7 @@ class Game2QuestionAnswerGenerator
         // textFont();
         text(this.questions[question_number], text_width/2, text_height/2);
 
-        image(this.questions_shape[question_number].shape_img, image_width_pos - 75, image_height_pos - 50);
+        image(this.questions_shape[question_number].shape_img, image_width_pos - this.questions_shape[question_number].shape_img.width/2, image_height_pos - this.questions_shape[question_number].shape_img.height/2);
         pop();
     }
 
