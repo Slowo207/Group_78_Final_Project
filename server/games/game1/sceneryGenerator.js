@@ -12,6 +12,8 @@ class SceneryGenerator
     {
         //game background design
 
+        push();
+
         //sky
         fill("#b7e8ff");
         rect(this.x, this.y, this.s_width, this.s_height);
@@ -20,5 +22,7 @@ class SceneryGenerator
         fill("#6eb5ff")
         stroke("#6eb5ff");
         rect(0, 2*this.y, this.s_width, 3*this.s_height/4);
+
+        pop();
     }
 }

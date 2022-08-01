@@ -65,6 +65,7 @@ class QuestionAnswerGenerator
      displayQuestion(question_number, text_width, text_height)
      {
         // Questionaire box
+        push();
         stroke(125);
         strokeWeight(5);
         fill(0);
@@ -73,18 +74,20 @@ class QuestionAnswerGenerator
         fill(255);
         stroke(255);
         strokeWeight(1);
-        textSize(35);
+        textSize(40);
         textAlign(CENTER,CENTER);
         // textFont();
         text(this.questions[question_number], text_width/2, text_height/2);
+        pop();
      }
 
-     checkAnswer(question_number ,chosen_answer, score, option_button, game_ended)
+     checkAnswer(question_number ,chosen_answer, scoreboard, option_button, game_ended)
      {
         if(this.answers[question_number] == chosen_answer)
         {
             game_stage++;
-            score[question_number] = "Correct";
+            scoreboard.score[question_number] = "Correct";
+            scoreboard.remaining_questions--;
             toggle_options = !toggle_options;
             player_rod_line_length = player_rod_line_length - 40;
             this.marks++;
