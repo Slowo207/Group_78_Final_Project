@@ -178,14 +178,11 @@ function printRetry()
 {
     push();
 
-    fill("#f7bfff");
-    rect(220, 575, 360, 50);
-
     fill("#ff0032");
     stroke("#ff0032");
     textSize(30);
     textAlign(CENTER,CENTER);
-    text("Incorrect, please try again!", width/2, 3*height/4);
+    text("Incorrect, please try again!", width/2, height/4);
     pop();
 }
 

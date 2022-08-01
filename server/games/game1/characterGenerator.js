@@ -19,7 +19,9 @@ class CharacterGenerator
         {
             if(rod_length > 0)
             {
+                push();
                 stroke(255);
+                pop();
                 line(this.x + 52, this.y + 10, this.x + 52, this.y + 10 + rod_length);
                 image(this.fish, this.x + 33, this.y + 10 + rod_length);
             }
@@ -32,7 +34,9 @@ class CharacterGenerator
         {
             if(rod_length > 0)
             {
+                push();
                 stroke(255);
+                pop();
                 line(this.x + 9, this.y + 10, this.x + 9, this.y + 10 + rod_length);
                 image(this.fish, this.x - 8, this.y + 10 + ai_rod_line_length);
             }

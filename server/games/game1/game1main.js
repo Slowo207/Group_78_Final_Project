@@ -14,6 +14,7 @@ var option1, option2, option3, option4;
 // a boolean to toggle options
 var toggle_options = true;
 var toggle_timer = true;
+var toggle_bgm = true;
 
 // buttons dimension
 var answer_button_width;
@@ -24,7 +25,7 @@ var player_rod_line_length = 200;
 var ai_rod_line_length = 200;
 
 //fishing rod speed change 
-var ai_rod_line_speed = 0.1;
+var ai_rod_line_speed = 0.05;
 
 //number of questions
 var number_of_questions = 5;
@@ -32,6 +33,17 @@ var number_of_questions = 5;
 //timer
 var timer = 0;
 var completionTime = 0;
+
+// bgm
+var bgm;
+
+function preload()
+{
+    soundFormats('mp3');
+
+    bgm = loadSound("sound/Cuckoo Clock Quincas Moreira Background Music Children'sMusic.mp3");
+    bgm.setVolume(0.2);
+}
 
 function setup()
 {
@@ -46,44 +58,50 @@ function setup()
     player = new CharacterGenerator("assets/player1.png", "assets/player_fish.png",100, 2*height/5-40);
     ai_character = new CharacterGenerator("assets/ai_fisherman.png", "assets/ai_fish.png",width-150, 2*height/5-40);
 
-    scenery = new SceneryGenerator(0, height/5, width, 3*height/5);
+    startpage_background = loadImage("assets/beach_mainpage.png");
 
-     // Start Button
-     game_start_button = createButton('Start');  
-     game_start_button.position(width/2 - 75, height/2 - 38);
-     game_start_button.size(150,76);
-     game_start_button.mouseClicked(function(){game_start = true;});
+    scenery = new SceneryGenerator(0, height/5, width, 4*height/5);
 
-     //Options Button
-     // Option 1
-     option1 = createButton("A) ");
-     option1.position(0, answer_button_height*8);
-     option1.size(answer_button_width, answer_button_height);
-     option1.mouseClicked(function(){questions_set.checkAnswer(game_stage, option1.value(),scoreboard.score, option1, gameEnded)});
+    // Start Button
+    game_start_button = createImg('assets/start-button.png');  
+    game_start_button.position(width/4+20, height/4+20);
+    game_start_button.mouseClicked(function(){game_start = true;});
 
-     // Option 2
-     option2 = createButton("B) ");
-     option2.position(answer_button_width, answer_button_height*8);
-     option2.size(answer_button_width, answer_button_height);
-     option2.mouseClicked(function(){questions_set.checkAnswer(game_stage, option2.value(),scoreboard.score, option2, gameEnded)});
+    //Options Button
+    // Option 1
+    option1 = createButton("A) ");
+    option1.position(0, answer_button_height*8);
+    option1.size(answer_button_width, answer_button_height);
+    option1.style("font-size", '45px');
+    option1.mouseClicked(function(){questions_set.checkAnswer(game_stage, option1.value(),scoreboard, option1, gameEnded)});
 
-     // Option 3
-     option3 = createButton("C) ");
-     option3.position(0, answer_button_height*9);
-     option3.size(answer_button_width, answer_button_height);
-     option3.mouseClicked(function(){questions_set.checkAnswer(game_stage, option3.value(),scoreboard.score, option3, gameEnded)});
+    // Option 2
+    option2 = createButton("B) ");
+    option2.position(answer_button_width, answer_button_height*8);
+    option2.size(answer_button_width, answer_button_height);
+    option2.style("font-size", '45px');
+    option2.mouseClicked(function(){questions_set.checkAnswer(game_stage, option2.value(),scoreboard, option2, gameEnded)});
 
-     // Option 4
-     option4 = createButton("D) ");
-     option4.position(answer_button_width, answer_button_height*9);
-     option4.size(answer_button_width, answer_button_height);
-     option4.mouseClicked(function(){questions_set.checkAnswer(game_stage, option4.value(),scoreboard.score, option4, gameEnded)});
+    // Option 3
+    option3 = createButton("C) ");
+    option3.position(0, answer_button_height*9);
+    option3.size(answer_button_width, answer_button_height);
+    option3.style("font-size", '45px');
+    option3.mouseClicked(function(){questions_set.checkAnswer(game_stage, option3.value(),scoreboard, option3, gameEnded)});
+
+    // Option 4
+    option4 = createButton("D) ");
+    option4.position(answer_button_width, answer_button_height*9);
+    option4.size(answer_button_width, answer_button_height);
+    option4.style("font-size", '45px');
+    option4.mouseClicked(function(){questions_set.checkAnswer(game_stage, option4.value(),scoreboard, option4, gameEnded)});
 
     // Restart Game Button
-    restart_button = createButton("Play again!");
+    restart_button = createButton("Restart");
     restart_button.position(width/2 - 105, 2*height/3);
     restart_button.size(210,76);
     restart_button.mouseClicked(restart_game);
+
 }
 
 function draw()
@@ -91,6 +109,11 @@ function draw()
     if(game_start)
     {
         game_start_button.hide();
+
+        if(toggle_bgm)
+        {
+            startBGM();
+        }
 
         //game scenery
         scenery.displayScenery();
@@ -122,6 +145,10 @@ function draw()
         }
         else
         {
+            option1.hide();
+            option2.hide();
+            option3.hide();
+            option4.hide();
             gameEnded = true;
             ai_rod_line_speed = 0;
             restart_button.show();
@@ -132,6 +159,7 @@ function draw()
             }
             questions_set.displayEndGameMarks(completionTime);
             timer = 0;
+            endBGM();
         }
 
         ai_rod_line_length -= ai_rod_line_speed;
@@ -148,13 +176,7 @@ function draw()
         game_start_button.show();
 
         // default background
-        background("#b7e8ff");
-
-        //background placeholder, can remove later
-        stroke(0);
-        textAlign(CENTER,CENTER);
-        textSize(35);
-        text("Background picture here", width/2, height/4);
+        image(startpage_background, 0, 0);
     }
 }
 
@@ -163,26 +185,26 @@ function draw()
 function updateOptionButton(game_stage)
 {
     // Answer Options
-
     // Option 1
     option1.html("A) " + questions_set.answers_options[game_stage][0]);
     option1.value(questions_set.answers_options[game_stage][0]);
-    option1.style('background-color', 'lightgrey');
+    option1.style('background-color', '#dbf3ff');
 
     // Option 2
     option2.html("B) " + questions_set.answers_options[game_stage][1]);
     option2.value(questions_set.answers_options[game_stage][1]);
-    option2.style('background-color', 'lightgrey');
+    option2.style('background-color', '#dbf3ff');
 
     // Option 3
     option3.html("C) " + questions_set.answers_options[game_stage][2]);
     option3.value(questions_set.answers_options[game_stage][2]);
-    option3.style('background-color', 'lightgrey');
+    option3.style('background-color', '#dbf3ff');
 
     // Option 4
     option4.html("D) " + questions_set.answers_options[game_stage][3]);
     option4.value(questions_set.answers_options[game_stage][3]);
-    option4.style('background-color', 'lightgrey');
+    option4.style('background-color', '#dbf3ff');
+
 }
 
 function updateQuestionAndOptions(game_stage)
@@ -223,7 +245,7 @@ function gameTimer()
   fill(255,0,0);
   stroke(255,0,0);
   textSize(35);
-  text("Time: " + timer.toFixed(1) + " seconds", width/2, height/5 + 25);
+  text("Time: " + timer.toFixed(1) + " seconds", 10,  30);
   pop();
 
   timer += deltaTime/1000;
@@ -235,6 +257,21 @@ function printRetry()
     fill("#6effa9");
     stroke("#6effa9");
     textSize(35);
+    textAlign(CENTER,CENTER);
     text("Incorrect, please try again!", width/2, 3*height/4);
     pop();
+}
+
+function startBGM()
+{
+    bgm.play();
+    bgm.loop();
+
+    toggle_bgm = !toggle_bgm;
+}
+
+function endBGM()
+{
+    bgm.stop();
+    toggle_bgm = !toggle_bgm;
 }
