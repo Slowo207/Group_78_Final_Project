@@ -13,15 +13,11 @@ class Fish{
   
   draw(){
     //draws price
-    push()
-    translate(550,400)
-    rotate(PI/2)
-    image(priceTag, 0, 0, 50, 50)
-    pop()
+    image(priceTag, 510, 410, 50, 50)
 
     textSize(20)
     fill("black")
-    text(this.cost, this.x+15, this.y- 130)
+    text(this.cost, this.x+25, this.y- 115)
     
     //draws change
     textSize(32)

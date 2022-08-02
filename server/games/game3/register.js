@@ -1,5 +1,6 @@
 class Register{
-  constructor(x, y, width, height, cost, asset, assetHeight, offset, scale){
+  constructor(id, x, y, width, height, cost, asset, assetHeight, offset, scale, textOffsetX, textOffsetY){
+    this.id = id
     this.x = x
     this.y = y
     this.width = width
@@ -9,6 +10,8 @@ class Register{
     this.assetHeight = assetHeight
     this.offset = offset
     this.scale = scale
+    this.textOffsetX = textOffsetX
+    this.textOffsetY = textOffsetY
 
   }
   
@@ -18,15 +21,19 @@ class Register{
     image(this.asset, this.x + this.scale/2, this.y +this.offset, this.width - this.scale, this.assetHeight - this.scale)
     noFill()
     color("blue")
+    textSize(28)
+    fill("black")
+    text(this.cost, this.x + this.textOffsetX, this.y + this.textOffsetY)
+
     //rect(this.x, this.y, this.width, this.height)
   }
   
   clicked(){
     if((mouseX > this.x && mouseX < this.x+this.width) && (mouseY > this.y && mouseY < this.y + this.height)){
-      return this.cost
+      return [this.id, this.cost]
     }
     else{
-      return 0
+      return false
     }
   }
 }
