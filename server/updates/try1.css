@@ -1,0 +1,366 @@
+* { margin: 0; padding: 0; }
+* {box-sizing:border-box}
+
+
+@font-face {
+  src: url(fonts/Sassoon-Primary.otf);
+  font-family: sass;
+}
+/* overall html */
+body{
+  background-image: linear-gradient(#6EB5FF 0%,#007DFF 100%);
+  background-size: cover;
+  font-family: sass;
+  height: 100vh;
+}
+
+/*nav bar*/
+nav {
+  height: 60px;
+  font-size: 30px;
+  line-height: 60px;
+  vertical-align: middle;
+  text-align: center;
+  background-color:#98D4FF;
+  width: auto;
+  z-index: 1;
+  }
+  
+nav ul{
+  width: 100%;
+  margin:0 auto;	
+} 
+
+nav li {
+  width:250px;
+  display: inline-block;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  }
+  
+nav li:hover {
+  background-color: #ffab6e;
+  }
+  
+nav a, a:active {
+  color: black;
+  text-decoration: none;
+  }
+
+
+i{
+  margin-right:10px;
+}
+
+
+/* body*/
+#bodymain{
+  background-image:url('pictures/WAVE.gif');
+  background-repeat:repeat;
+  image-rendering: pixelated;
+}
+/* index page body   */
+.homeh1{
+  text-align: center;
+  margin-top: 200px;
+  font-size: 80px;
+  color: yellow;
+  font-family: sass;
+}
+
+.play_button {
+  border: none;
+  color: black;
+  width: 200px;
+  height:60px;
+  border-radius: 20%;
+  padding: 16px 32px;
+  font-size: 16px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 45%;
+}
+.play_button :active{
+  background-color:#007DFF;
+}
+
+/* about page body */
+#aboutMain{
+  margin-top:  30px;
+
+}
+.about1{
+  font-size: 40px;
+}
+.about2{
+  font-size: 40px;
+  margin-top:40px;
+}
+
+/*grades page*/
+.gradesh1{
+  text-align: center;
+  margin-top: 40px;
+  font-size: 60px;
+  color: black;
+}
+.btn-group button {
+
+  background-color: #85E3FF; 
+  border-radius: 10px;
+  border:none; 
+  color: black;
+  margin:0 auto;
+  margin-top:2%;
+  padding: 10px 24px; 
+  cursor: pointer; 
+  width: 60%; 
+  height:100px;
+  display: block; /* Make the buttons appear below each other */
+  font-size: 30px;;
+}
+
+.btn-group button:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+
+
+.btn-group #p1:hover{
+  background-color:#FFE86E;
+}
+
+.btn-group #p2:hover{
+  background-color:#FF6ECB;
+}	
+.btn-group #p3:hover{
+  background-color:#4DA0B2;
+}
+/*button group*/
+.Game_Name{
+  text-align: center;
+  font-size: 60px;
+  color: blue;
+}
+
+/*LEVELS*/
+
+/*grid container for levels choices*/
+.grid-container{
+  width: 70%;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  margin-left:17%;
+}
+
+.grid-item #p1{
+  border: 2px solid black;
+  background-color: #FEB7D3;
+  font-size: 30px;
+  text-decoration: none;
+  border-radius: 25px;
+  padding:70px;
+  margin: 20px;
+  display: grid;
+  place-items: center;
+}
+.grid-item button1{
+  border: 2px solid black;
+  background-color: black;
+  font-size: 30px;
+  text-decoration: none;
+  border-radius: 25px;
+  padding:70px;
+  margin: 20px;
+  display: grid;
+  place-items: center;
+}
+
+/*gamehosting.html*/
+
+.gameh1{
+  text-align:center;
+  margin-top: 3%;
+  font-size: 50px;
+}
+
+#gameboard{
+  background-color: white;
+  height:880px;
+  width:90%;
+  margin-top: 3%;
+  margin-left:5%;
+}
+
+
+/*button group for gamehosting html*/
+
+#gamehosting-btn button {
+  background-color: #04AA6D; /* Green background */
+  border: 1px solid green; /* Green border */
+  color: black; /* White text */
+  text-align:center;
+  margin-left:15%;
+  margin-top:5%;
+  width:15%;
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+}
+
+#gamehosting-btn button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+/* Clear floats (clearfix hack) */
+#gamehosting-btn:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Add a background color on hover */
+#gamehosting-btn button:hover {
+  background-color: #3e8e41;
+}
+
+/*footer*/
+
+#footer{
+  position: fixed;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:9%;
+  background-color: #98D4FF;
+  color:black;
+  text-align: center;
+}
+
+#footerh1{
+  margin-top: 10px;
+}
+
+* {box-sizing:border-box}
+
+/* Slideshow container */
+#slideshowh1{
+  text-align: center;
+  margin-top: 1%;
+}
+.slideshow-container {
+max-width: 1000px;
+position: relative;
+margin: 1% auto;
+}
+
+.text{
+  color:black;
+}
+/* Hide the images by default */
+.mySlides {
+display: none;
+}
+
+.mySlides div{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: black;
+  color: white;
+  margin-bottom: 5px;
+  font-family: sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: visibility 0s, opacity 0.5s linear; 
+  transition: visibility 0s, opacity 0.5s linear;
+
+}
+
+   /* Hover on Parent Container */.content_img:hover{
+  cursor: pointer;
+   }
+   
+   .mySlides:hover div{
+  width: 350px;
+  padding: 8px 15px;
+  visibility: visible;
+  opacity: 0.7; 
+   }
+
+/* Next & previous buttons */
+.prev, .next {
+cursor: pointer;
+position: absolute;
+top: 50%;
+width: auto;
+margin-top: -22px;
+padding: 16px;
+color: white;
+font-weight: bold;
+font-size: 18px;
+transition: 0.6s ease;
+border-radius: 0 3px 3px 0;
+user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+right: 0;
+border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+color: #f2f2f2;
+font-size: 15px;
+padding: 8px 12px;
+position: absolute;
+bottom: 8px;
+width: 100%;
+text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+color: #f2f2f2;
+font-size: 12px;
+padding: 8px 12px;
+position: absolute;
+top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+cursor: pointer;
+height: 15px;
+width: 15px;
+margin: 0 2px;
+background-color: #bbb;
+border-radius: 50%;
+display: inline-block;
+transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+animation-name: fade;
+animation-duration: 1.5s;
+}
+
+@keyframes fade {
+from {opacity: .4}
+to {opacity: 1}
+}
