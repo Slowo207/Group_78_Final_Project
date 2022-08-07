@@ -20,7 +20,7 @@ class Register{
     //image(this.asset, this.x + this.scale/2 , this.y + this.scale/2, this.width- this.scale, this.assetHeight - this.scale)
     image(this.asset, this.x + this.scale/2, this.y +this.offset, this.width - this.scale, this.assetHeight - this.scale)
     noFill()
-    color("blue")
+    //color("black")
     textSize(28)
     fill("black")
     text(this.cost, this.x + this.textOffsetX, this.y + this.textOffsetY)

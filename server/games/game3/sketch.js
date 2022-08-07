@@ -5,12 +5,15 @@ function setup() {
   clientAssetArray = ["Boy.png", "Girl.png", "Grandma.png"]
   fishAssetArray = ["Fish_blue.png", "Fish_green.png", "Fish_orange.png", "Fish_purple.png", "Fish_yellow.png"]
   levelArray = [
-    [0.1, 1, 0.1, false],
-    [0.1, 1, 0.05, false],
-    [1, 100, 10, true],
-    [1, 100, 5, true],
-    [1, 100, 1, true]
+    //[MinPrice, MaxPrice, Increments, removeDecimal, HideCost, HidePaid]
+    [0.1, 1, 0.1, false, false, false],
+    [0.1, 1, 0.05, false, false, false],
+    [1, 100, 10, true, false, false],
+    [1, 100, 5, true, false, false],
+    [1, 100, 1, true, false, false]
   ]
+
+  fishInLevel = 10
 
   resetGame()
 
@@ -55,7 +58,10 @@ function resetGame(){
   change = 0 
   gameState = 0
   score = 0
-  level = 4
+  level = 4 
+
+  costHide = levelArray[level][4]
+  paidHide = levelArray[level][5]
 
   //registerArray.push()
   fishPrice(levelArray[level])
@@ -79,7 +85,7 @@ function fishPrice(priceArray){
   increment = priceArray[2]
   rD = priceArray[3]
   
-  for(i=0; i < 10; i++){
+  for(i=0; i < fishInLevel; i++){
     cost = getRndInteger(startPrice, endPrice, rD)
     fishArray.push(new Fish(cost, findPaid(cost,endPrice, increment), clientAssetArray[getRndInteger(0,3,true)], fishAssetArray[getRndInteger(0,5,true)]))
   }  
@@ -98,31 +104,52 @@ function gamePage(){
 
   image(registerAsset, 100, 400, 300, 300)
 
-  fill(39, 30, 220)
+  fill('#F8DECB')
   //fish box
   rect(400, 400, 300, 300)
   //cash box
   rect(100, 100, 300, 300)
 
-  noFill()
-  //register box
-  rect(100, 400, 300, 300)   
+  fill('#C8AE7E ')
   //Paid box
   rect(120, 120, 120, 200)
   //change box
   rect(260, 120, 120, 200)
   rect(260, 150, 120, 170)
 
+  noFill()
+  //register box
+  rect(100, 400, 300, 300)   
+
   //give change box
   rect(150, 350, 200, 30)
 
   textSize(32)
   fill("black")
-  text(score, 50, 50)
+  
+  text("Change", 250, 100)
+  if(costHide){
+    push()
+    fill("blue")
+    rect(260, 120, 120, 30)
+    pop()
+  }else{
+    text(change, 300, 150)
+  }
   //text("Fish", 400, 450)
   text("Paid", 100, 100)
-  text("Change", 250, 100)
-  text(change, 300, 150)
+
+  if(paidHide){
+    push()
+    fill("blue")
+    rect(120, 120, 120, 30)
+    pop()
+  }else{
+    text(fishArray[fish].paid, 160, 145)
+  }
+  
+  text(score, 50, 50)
+  
   text("Give Change", 150, 375)
   
   for(i=0; i < registerArray.length; i++){
@@ -134,16 +161,6 @@ function gamePage(){
   }
   
   fishArray[fish].draw()
-
-  // text("50", 120+75*0, 510)
-  // text("20", 120+75*1, 510)
-  // text("10", 120+75*2, 510)
-  // text("5", 125+75*3, 510)
-  
-  // text("1", 133+75*0, 650)
-  // text(".50", 120+75*1, 650)
-  // text(".25", 120+75*2, 650)
-  // text(".10", 120+75*3, 650)
 }
 
 function endPage(){
