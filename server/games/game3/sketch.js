@@ -10,7 +10,7 @@ function setup() {
     [0.1, 1, 0.05, false, false, false],
     [1, 100, 10, true, false, false],
     [1, 100, 5, true, false, false],
-    [1, 100, 1, true, false, false]
+    [1, 100, 1, true, true, true]
   ]
 
   fishInLevel = 10
@@ -21,6 +21,8 @@ function setup() {
   registerAsset = loadImage('assets/Register.png')
 
   priceTag = loadImage('assets/PriceTag.png')
+
+  paidNote = loadImage('assets/NotePaid.png')
 
   //loading register box
   //(id, x, y, width, height, cost, asset, assetHeight, offset, scale, textOffsetX, textOffsetY)
@@ -36,15 +38,15 @@ function setup() {
   
   //loading Change box
   //(x, y, width, height, cost, amount, asset, type)
-  changeArray.push(new Change(260, 150, 60, 60, 50, 0, "Note50.png", 30, 45, "Note"))
-  changeArray.push(new Change(320, 150, 60, 60, 20, 0, "Note20.png", 30, 45, "Note"))
-  changeArray.push(new Change(260, 210, 60, 60, 10, 0, "Note10.png", 30, 45, "Note"))
-  changeArray.push(new Change(320, 210, 60, 60, 5, 0, "Note5.png", 30, 45, "Note"))
+  changeArray.push(new Change(120 +65*0, 180, 65, 90, 50, 0, "Note50.png", 30, 45, "Note"))
+  changeArray.push(new Change(120 +65*1, 180, 65, 90, 20, 0, "Note20.png", 30, 45, "Note"))
+  changeArray.push(new Change(120 +65*2, 180, 65, 90, 10, 0, "Note10.png", 30, 45, "Note"))
+  changeArray.push(new Change(120 +65*3, 180, 65, 90, 5, 0, "Note5.png", 30, 45, "Note"))
 
-  changeArray.push(new Change(260, 270, 30, 50, 1, 0, "GoldCoin.png", 20, 20, "Coin"))
-  changeArray.push(new Change(290, 270, 30, 50, 0.50, 0, "SilverCoin.png", 20, 20, "Coin"))
-  changeArray.push(new Change(320, 270, 30, 50, 0.20, 0, "BrassCoin.png", 20, 20, "Coin"))
-  changeArray.push(new Change(350, 270, 30, 50, 0.05, 0, "BrassCoin.png", 20, 20, "Coin"))
+  changeArray.push(new Change(120 +65*0, 270, 65, 60, 1, 0, "GoldCoin.png", 20, 20, "Coin"))
+  changeArray.push(new Change(120 +65*1, 270, 65, 60, 0.50, 0, "SilverCoin.png", 20, 20, "Coin"))
+  changeArray.push(new Change(120 +65*2, 270, 65, 60, 0.20, 0, "BrassCoin.png", 20, 20, "Coin"))
+  changeArray.push(new Change(120 +65*3, 270, 65, 60, 0.05, 0, "BrassCoin.png", 20, 20, "Coin"))
 
   console.log(changeArray)
 
@@ -58,7 +60,7 @@ function resetGame(){
   change = 0 
   gameState = 0
   score = 0
-  level = 4 
+  level = 3
 
   costHide = levelArray[level][4]
   paidHide = levelArray[level][5]
@@ -92,6 +94,7 @@ function fishPrice(priceArray){
 }
 
 function startPage(){
+  image(backgoundImage, 0, 0, 800, 800)
   textSize(32)
   fill("black")
   text("Start", 370, 350)
@@ -112,10 +115,10 @@ function gamePage(){
 
   fill('#C8AE7E ')
   //Paid box
-  rect(120, 120, 120, 200)
+  //rect(120, 120, 120, 200)
   //change box
-  rect(260, 120, 120, 200)
-  rect(260, 150, 120, 170)
+  //rect(260, 120, 120, 200)
+  rect(120, 120, 260, 210)
 
   noFill()
   //register box
@@ -124,29 +127,22 @@ function gamePage(){
   //give change box
   rect(150, 350, 200, 30)
 
-  textSize(32)
+  textSize(26)
   fill("black")
   
-  text("Change", 250, 100)
+  text("Total Change:", 125, 160)
   if(costHide){
     push()
     fill("blue")
     rect(260, 120, 120, 30)
     pop()
   }else{
-    text(change, 300, 150)
+    text(change, 290, 162)
   }
   //text("Fish", 400, 450)
-  text("Paid", 100, 100)
+  //text("Paid", 100, 100)
 
-  if(paidHide){
-    push()
-    fill("blue")
-    rect(120, 120, 120, 30)
-    pop()
-  }else{
-    text(fishArray[fish].paid, 160, 145)
-  }
+  textSize(32)
   
   text(score, 50, 50)
   
@@ -161,9 +157,26 @@ function gamePage(){
   }
   
   fishArray[fish].draw()
+
+  fill('#C8AE7E ')
+  rect(400,350, 300, 50)
+
+  image(paidNote, 500, 353, 100, 44)
+
+  if(paidHide){
+    push()
+    fill("blue")
+    rect(120, 120, 120, 30)
+    pop()
+  }else{
+    textSize(32)
+    fill("black")
+    text(fishArray[fish].paid, 530, 385)
+  }
 }
 
 function endPage(){
+  image(backgoundImage, 0, 0, 800, 800)
   textSize(32)
   fill("black")
   text("End", 370, 350)
@@ -203,8 +216,8 @@ function mouseClicked(){
         gameState = 2
       }
     //Remove Change logic
-    260, 150, 120, 170
-    }else if((mouseX > 260 && mouseX < 380) && (mouseY > 150 && mouseY < 320)){
+    //120, 120, 260, 210
+    }else if((mouseX > 120 && mouseX < 380) && (mouseY > 150 && mouseY < 330)){
       for(i=0; i < changeArray.length; i++){
         changeClicked = changeArray[i].clicked()
         change -= changeClicked
