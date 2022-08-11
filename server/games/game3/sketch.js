@@ -46,15 +46,21 @@ function setup() {
   changeArray.push(new Change(120 +65*0, 270, 65, 60, 1, 0, "GoldCoin.png", 20, 20, "Coin"))
   changeArray.push(new Change(120 +65*1, 270, 65, 60, 0.50, 0, "SilverCoin.png", 20, 20, "Coin"))
   changeArray.push(new Change(120 +65*2, 270, 65, 60, 0.20, 0, "BrassCoin.png", 20, 20, "Coin"))
-  changeArray.push(new Change(120 +65*3, 270, 65, 60, 0.05, 0, "BrassCoin.png", 20, 20, "Coin"))
+  changeArray.push(new Change(120 +65*3, 270, 65, 60, 0.05, 0, "CentExtra.png", 20, 20, "Coin"))
 
   console.log(changeArray)
-
+  
+  //loading background image
   backgoundImage = loadImage('assets/image0.jpg')
+
+  //loading score images
+  correctImg = loadImage('assets/HappyFace.png')
+  wrongImg = loadImage('assets/SadFace2.png')
 }
 
 function resetGame(){
   fishArray = []
+  scoreArray = []
   fish = 0
   cost = 0
   change = 0 
@@ -114,10 +120,7 @@ function gamePage(){
   rect(100, 100, 300, 300)
 
   fill('#C8AE7E ')
-  //Paid box
-  //rect(120, 120, 120, 200)
-  //change box
-  //rect(260, 120, 120, 200)
+  //Change Background
   rect(120, 120, 260, 210)
 
   noFill()
@@ -130,6 +133,7 @@ function gamePage(){
   textSize(26)
   fill("black")
   
+  //Change Text
   text("Total Change:", 125, 160)
   if(costHide){
     push()
@@ -144,10 +148,29 @@ function gamePage(){
 
   textSize(32)
   
-  text(score, 50, 50)
-  
+  //Score Text
+  //text(score, 50, 50)
+
+  //Score filler
+  for(i=0; i< fishInLevel; i++){
+    fill('rgba(0, 0, 0, .5)')
+    ellipse(130 + 60 *i, 50, 50, 50)
+  }
+
+  //Score Images
+  for(i=0; i < fish; i++){
+    if(scoreArray[i] == 1){
+      image(correctImg, 105 + 60*i, 25, 50, 50)
+    }else {
+      image(wrongImg, 105 + 60*i, 25, 50, 50)
+    }
+  }
+
+  //Give Change Button
+  fill("black")
   text("Give Change", 150, 375)
   
+  //Draws register and change Box 
   for(i=0; i < registerArray.length; i++){
     registerArray[i].draw()
   }  
@@ -156,8 +179,10 @@ function gamePage(){
     changeArray[i].draw()
   }
   
+  //Draws fish
   fishArray[fish].draw()
 
+  //Customer paid Note
   fill('#C8AE7E ')
   rect(400,350, 300, 50)
 
@@ -204,12 +229,15 @@ function mouseClicked(){
     }else if((mouseX < 350 && mouseX > 150)&&(mouseY < 380 && mouseY > 350)){
       if(change == fishArray[fish].change){
         score += 1
+        scoreArray.push(1)
       }else{
-        console.log(fishArray[fish].change, change)
+        //console.log(fishArray[fish].change, change)
+        scoreArray.push(0)
       }
       for(i=0; i<changeArray.length; i++){
         changeArray[i].amount = 0
       }
+      //console.log(scoreArray)
       change = 0
       fish += 1
       if(fish > fishArray.length -1){
