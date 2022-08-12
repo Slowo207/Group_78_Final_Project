@@ -4,6 +4,7 @@ class Scoreboard
     {
         // score of the questions
         this.score = [];
+        this.amt_of_questions = amount_of_questions;
         this.remaining_questions = amount_of_questions;
         this.#generateDefaultScore(amount_of_questions);
         this.notice_background = loadImage('assets/wooden noticeboard.png');
@@ -28,7 +29,7 @@ class Scoreboard
         textSize(25);
         text("Questions remaining:", width/2+2, height/3+10);
         textSize(50);
-        text(this.remaining_questions + "/5", width/2, height/3 + 60);
+        text(this.remaining_questions + "/" + this.amt_of_questions, width/2, height/3 + 60);
         pop();
     }
 }

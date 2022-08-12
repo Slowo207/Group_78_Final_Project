@@ -1,3 +1,16 @@
+// ***** To change the amount of questions & AI's fishing rod speed, change only these 2 variables *****
+
+//number of questions
+var number_of_questions = 5;
+
+//fishing rod speed change 
+var ai_rod_line_speed = 0.05;
+
+// range of numbers to be tested 
+var number_range = 100;
+
+// ***** DO NOT CHANGE ANY VARIABLE BELOW HERE *****
+
 // game state
 var game_start = false;
 var gameEnded = false;
@@ -24,11 +37,8 @@ var answer_button_height;
 var player_rod_line_length = 200;
 var ai_rod_line_length = 200;
 
-//fishing rod speed change 
-var ai_rod_line_speed = 0.05;
-
-//number of questions
-var number_of_questions = 5;
+// fishing rod speed
+var player_rod_reduction = 0;
 
 //timer
 var timer = 0;
@@ -49,7 +59,7 @@ function setup()
 {
 	createCanvas(800, 800);
 
-    questions_set = new QuestionAnswerGenerator(number_of_questions, 100);
+    questions_set = new QuestionAnswerGenerator(number_of_questions, number_range);
     scoreboard = new Scoreboard(number_of_questions);
 
     answer_button_width = width/2;
@@ -73,28 +83,28 @@ function setup()
     option1.position(0, answer_button_height*8);
     option1.size(answer_button_width, answer_button_height);
     option1.style("font-size", '45px');
-    option1.mouseClicked(function(){questions_set.checkAnswer(game_stage, option1.value(),scoreboard, option1, gameEnded)});
+    option1.mouseClicked(function(){questions_set.checkAnswer(game_stage, option1.value(),scoreboard, option1, gameEnded, player_rod_reduction)});
 
     // Option 2
     option2 = createButton("B) ");
     option2.position(answer_button_width, answer_button_height*8);
     option2.size(answer_button_width, answer_button_height);
     option2.style("font-size", '45px');
-    option2.mouseClicked(function(){questions_set.checkAnswer(game_stage, option2.value(),scoreboard, option2, gameEnded)});
+    option2.mouseClicked(function(){questions_set.checkAnswer(game_stage, option2.value(),scoreboard, option2, gameEnded, player_rod_reduction)});
 
     // Option 3
     option3 = createButton("C) ");
     option3.position(0, answer_button_height*9);
     option3.size(answer_button_width, answer_button_height);
     option3.style("font-size", '45px');
-    option3.mouseClicked(function(){questions_set.checkAnswer(game_stage, option3.value(),scoreboard, option3, gameEnded)});
+    option3.mouseClicked(function(){questions_set.checkAnswer(game_stage, option3.value(),scoreboard, option3, gameEnded, player_rod_reduction)});
 
     // Option 4
     option4 = createButton("D) ");
     option4.position(answer_button_width, answer_button_height*9);
     option4.size(answer_button_width, answer_button_height);
     option4.style("font-size", '45px');
-    option4.mouseClicked(function(){questions_set.checkAnswer(game_stage, option4.value(),scoreboard, option4, gameEnded)});
+    option4.mouseClicked(function(){questions_set.checkAnswer(game_stage, option4.value(),scoreboard, option4, gameEnded, player_rod_reduction)});
 
     // Restart Game Button
     restart_button = createButton("Restart");
@@ -102,6 +112,7 @@ function setup()
     restart_button.size(210,76);
     restart_button.mouseClicked(restart_game);
 
+    player_rod_reduction = player_rod_line_length/number_of_questions;
 }
 
 function draw()

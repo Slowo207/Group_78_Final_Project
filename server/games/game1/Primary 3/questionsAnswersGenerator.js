@@ -16,7 +16,9 @@ class QuestionAnswerGenerator
     char_to_operator = 
     {
         '+': function (x, y) { return x + y },
-        '-': function (x, y) { return x - y }
+        '-': function (x, y) { return x - y },
+        '*': function (x, y) { return x * y },
+        '➗': function (x, y) { return x / y}
     };
 
      // a private method to populate the array with 5 questions.
@@ -24,10 +26,27 @@ class QuestionAnswerGenerator
      {
          for(let i = 0; i < amount_of_questions; ++i)
             {
-                let int1 = floor(random(1, floor(range_of_numbers/2)+1));
-                let int2 = floor(random(int1));
-                let operatorsArray = ['+', '-'];
+                let int1, int2, int3;
+                let operatorsArray = ['+', '-', '*', '➗'];
                 let operator = random(operatorsArray);
+                
+                if(operator == '*')
+                {
+                    int1 = floor(random(1, 13));
+                    int2 = floor(random(1, 13));
+                }
+                else if (operator == '➗')
+                {
+                    int2 = floor(random(1, 13));
+                    int3 = floor(random(1, 13));
+
+                    int1 = int2 * int3;
+                }
+                else
+                {
+                    int1 = floor(random(1, floor(range_of_numbers/2)+1));
+                    int2 = floor(random(int1));
+                }
                 this.questions.push("What is " + int1 + " " + operator + " " + int2 + "?");
                 this.answers.push(this.char_to_operator[operator](int1,int2));
             }
@@ -81,7 +100,7 @@ class QuestionAnswerGenerator
         pop();
      }
 
-     checkAnswer(question_number ,chosen_answer, scoreboard, option_button, game_ended)
+     checkAnswer(question_number ,chosen_answer, scoreboard, option_button, game_ended, rod_reduction)
      {
         if(this.answers[question_number] == chosen_answer)
         {
@@ -89,7 +108,7 @@ class QuestionAnswerGenerator
             scoreboard.score[question_number] = "Correct";
             scoreboard.remaining_questions--;
             toggle_options = !toggle_options;
-            player_rod_line_length = player_rod_line_length - 40;
+            player_rod_line_length -= rod_reduction;
             this.marks++;
             this.isWrong = false;
             if(!gameEnded)
