@@ -6,7 +6,7 @@ class Change{
         this.height = height
         this.cost = cost
         this.amount = amount
-        this.asset = loadImage("assets/" + asset)
+        this.asset = loadImage("games/game3/assets/" + asset)
         this.assetwidth = assetwidth
         this.assetHeight = assetHeight
         this.type = type

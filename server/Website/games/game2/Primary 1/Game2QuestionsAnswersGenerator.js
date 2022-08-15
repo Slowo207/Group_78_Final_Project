@@ -3,13 +3,13 @@ class Game2QuestionAnswerGenerator
 
     constructor()
     {
-        this.c_fish_1 = new fishes("assets/2D/Circle/Circle_Fish.png", 'Circle');
-        this.c_fish_2 = new fishes("assets/2D/Circle/Circle_Fish2.png", 'Circle');
-        this.c_fish_3 = new fishes("assets/2D/Circle/Circle_Frog.png", 'Circle');
-        this.c_fish_4 = new fishes("assets/2D/Circle/Circle_Turtle.png", 'Circle');
-        this.r_fish_1 = new fishes("assets/2D/Rectangle/Rectangle_Fish.png", 'Rectangle');
-        this.s_fish_1 = new fishes("assets/2D/Square/Square_Anglerfish.png", 'Square');
-        this.t_fish_1 = new fishes("assets/2D/Triangle/Triangle_Fish.png", 'Triangle');
+        this.c_fish_1 = new fishes("games/game2/Primary 1/assets/2D/Circle/Circle_Fish.png", 'Circle');
+        this.c_fish_2 = new fishes("games/game2/Primary 1/assets/2D/Circle/Circle_Fish2.png", 'Circle');
+        this.c_fish_3 = new fishes("games/game2/Primary 1/assets/2D/Circle/Circle_Frog.png", 'Circle');
+        this.c_fish_4 = new fishes("games/game2/Primary 1/assets/2D/Circle/Circle_Turtle.png", 'Circle');
+        this.r_fish_1 = new fishes("games/game2/Primary 1/assets/2D/Rectangle/Rectangle_Fish.png", 'Rectangle');
+        this.s_fish_1 = new fishes("games/game2/Primary 1/assets/2D/Square/Square_Anglerfish.png", 'Square');
+        this.t_fish_1 = new fishes("games/game2/Primary 1/assets/2D/Triangle/Triangle_Fish.png", 'Triangle');
 
         this.shape_array = ["Triangle", "Square", "Circle", "Rectangle"];
 

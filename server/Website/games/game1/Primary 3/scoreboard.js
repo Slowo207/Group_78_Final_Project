@@ -7,7 +7,7 @@ class Scoreboard
         this.amt_of_questions = amount_of_questions;
         this.remaining_questions = amount_of_questions;
         this.#generateDefaultScore(amount_of_questions);
-        this.notice_background = loadImage('assets/wooden noticeboard.png');
+        this.notice_background = loadImage('games/game1/Primary 3/assets/wooden noticeboard.png');
     }
 
     #generateDefaultScore(amount_of_questions)

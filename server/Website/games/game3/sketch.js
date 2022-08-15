@@ -1,5 +1,9 @@
 function setup() {
-  createCanvas(800, 800);
+  //create a canvas to fill the content div from index.html
+	canvasContainer = select('#game3p1');
+	var c = createCanvas(canvasContainer.size().width, canvasContainer.size().height);
+	c.parent("game3p1");
+
   registerArray = []
   changeArray = []
   clientAssetArray = ["Boy.png", "Girl.png", "Grandma.png"]
@@ -18,11 +22,11 @@ function setup() {
   resetGame()
 
   //loading assets
-  registerAsset = loadImage('assets/Register.png')
+  registerAsset = loadImage('games/game3/assets/Register.png')
 
-  priceTag = loadImage('assets/PriceTag.png')
+  priceTag = loadImage('games/game3/assets/PriceTag.png')
 
-  paidNote = loadImage('assets/NotePaid.png')
+  paidNote = loadImage('games/game3/assets/NotePaid.png')
 
   //loading register box
   //(id, x, y, width, height, cost, asset, assetHeight, offset, scale, textOffsetX, textOffsetY)
@@ -51,11 +55,11 @@ function setup() {
   console.log(changeArray)
   
   //loading background image
-  backgoundImage = loadImage('assets/image0.jpg')
+  backgoundImage = loadImage('games/game3/assets/image0.jpg')
 
   //loading score images
-  correctImg = loadImage('assets/HappyFace.png')
-  wrongImg = loadImage('assets/SadFace2.png')
+  correctImg = loadImage('games/game3/assets/HappyFace.png')
+  wrongImg = loadImage('games/game3/assets/SadFace2.png')
 }
 
 function resetGame(){

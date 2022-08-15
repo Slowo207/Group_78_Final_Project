@@ -24,11 +24,7 @@ class fishes
     {
         let area = 0;
 
-        if (this.shape == "Triangle")
-        {
-            area = 0.5 * this.length * this.width;
-        }
-        else if(this.shape == "Square")
+        if(this.shape == "Square")
         {
             area = this.length * this.length;
         }
@@ -44,11 +40,7 @@ class fishes
     {
         let perimeter  = 0;
 
-        if (this.shape == "Triangle")
-        {
-            perimeter = this.width * 3;
-        }
-        else if(this.shape == "Square")
+        if(this.shape == "Square")
         {
             perimeter = this.length * 4;
         }

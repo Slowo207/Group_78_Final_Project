@@ -3,11 +3,11 @@ class Game2QuestionAnswerGenerator
 
     constructor()
     {
-        this.cone_fish_1 = new fishes("assets/3D/Cone/Cone_Squid.png", 'Cone');
-        this.cube_fish_1 = new fishes("assets/3D/Cube/Cube_Fish.png", 'Cube');
-        this.cuboid_fish_1 = new fishes("assets/3D/Cuboid/Cuboid_Fish.png", 'Cuboid');
-        this.cylinder_fish_1 = new fishes("assets/3D/Cylinder/Cylinder_Dolphin.png", 'Cylinder');
-        this.sphere_fish_1 = new fishes("assets/3D/Sphere/Sphere_Blowfish.png", 'Sphere');
+        this.cone_fish_1 = new fishes("games/game2/Primary 2/assets/3D/Cone/Cone_Squid.png", 'Cone');
+        this.cube_fish_1 = new fishes("games/game2/Primary 2/assets/3D/Cube/Cube_Fish.png", 'Cube');
+        this.cuboid_fish_1 = new fishes("games/game2/Primary 2/assets/3D/Cuboid/Cuboid_Fish.png", 'Cuboid');
+        this.cylinder_fish_1 = new fishes("games/game2/Primary 2/assets/3D/Cylinder/Cylinder_Dolphin.png", 'Cylinder');
+        this.sphere_fish_1 = new fishes("games/game2/Primary 2/assets/3D/Sphere/Sphere_Blowfish.png", 'Sphere');
 
         this.shape_array = ["Cone", "Cube", "Cuboid", "Cylinder", "Sphere"];
 

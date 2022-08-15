@@ -28,29 +28,34 @@ function preload()
 {
     soundFormats('mp3');
 
-    bgm = loadSound("sounds/Summer - Bensound - Royalty Free Music - No Copyright Music.mp3");
+    bgm = loadSound("games/game2/Primary 3/sounds/Summer - Bensound - Royalty Free Music - No Copyright Music.mp3");
     bgm.setVolume(0.2);
 }
 
 function setup()
 {
-	createCanvas(800, 800);
+	//create a canvas to fill the content div from index.html
+	canvasContainer = select('#game2p3');
+	var c = createCanvas(canvasContainer.size().width, canvasContainer.size().height);
+	c.parent("game2p3");
 
     questions_set = new Game2QuestionAnswerGenerator();
 
     answer_button_width = width/2;
     answer_button_height = height/10;
 
-    homepage = loadImage("assets/game2_homepage.png");
+    homepage = loadImage("games/game2/Primary 3/assets/game2_homepage.png");
 
     // Start Button
-    game_start_button = createImg('assets/start-button.png');  
+    game_start_button = createImg('games/game2/Primary 3/assets/start-button.png');  
+    game_start_button.parent("game2p3");
     game_start_button.position(width/4+20, height/4+20);
     game_start_button.mouseClicked(function(){game_start = true;});
 
     //Options Button
     // Option 1
     option1 = createButton("A) ");
+    option1.parent("game2p3");
     option1.position(0, answer_button_height*8);
     option1.size(answer_button_width, answer_button_height);
     option1.style("font-size", '30px');
@@ -58,6 +63,7 @@ function setup()
 
     // Option 2
     option2 = createButton("B) ");
+    option2.parent("game2p3");
     option2.position(answer_button_width, answer_button_height*8);
     option2.size(answer_button_width, answer_button_height);
     option2.style("font-size", '30px');
@@ -65,6 +71,7 @@ function setup()
 
     // Option 3
     option3 = createButton("C) ");
+    option3.parent("game2p3");
     option3.position(0, answer_button_height*9);
     option3.size(answer_button_width, answer_button_height);
     option3.style("font-size", '30px');
@@ -72,6 +79,7 @@ function setup()
 
     // Option 4
     option4 = createButton("D) ");
+    option4.parent("game2p3");
     option4.position(answer_button_width, answer_button_height*9);
     option4.size(answer_button_width, answer_button_height);
     option4.style("font-size", '30px');
@@ -79,6 +87,7 @@ function setup()
 
     // Restart Game Button
     restart_button = createButton("Restart");
+    restart_button.parent("game2p3");
     restart_button.position(width/2 - 105, 2*height/3);
     restart_button.size(210,76);
     restart_button.mouseClicked(restart_game);

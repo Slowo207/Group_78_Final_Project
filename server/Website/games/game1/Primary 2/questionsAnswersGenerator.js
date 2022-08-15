@@ -1,7 +1,7 @@
 class QuestionAnswerGenerator
 {
 
-    constructor(amount_of_questions, range_of_numbers)
+    constructor(amount_of_questions, range_of_numbers, multiplication_range)
     {
         // an array to contain the questions
         this.questions = [];
@@ -9,7 +9,7 @@ class QuestionAnswerGenerator
         this.answers = [];
         this.attempts = 0;
         this.isWrong = false;
-        this.#generateQuestions(amount_of_questions, range_of_numbers);
+        this.#generateQuestions(amount_of_questions, range_of_numbers, multiplication_range);
         this.#generateAnswers(amount_of_questions, range_of_numbers);
     }
 
@@ -21,7 +21,7 @@ class QuestionAnswerGenerator
     };
 
      // a private method to populate the array with 5 questions.
-    #generateQuestions(amount_of_questions, range_of_numbers)
+    #generateQuestions(amount_of_questions, range_of_numbers, multiplication_range)
      {
          for(let i = 0; i < amount_of_questions; ++i)
             {
@@ -31,8 +31,8 @@ class QuestionAnswerGenerator
                 
                 if(operator == '*')
                     {
-                        int1 = floor(random(1, 13));
-                        int2 = floor(random(1, 13));
+                        int1 = floor(random(1, multiplication_range+1));
+                        int2 = floor(random(1, multiplication_range+1));
                     }
                 else
                     {

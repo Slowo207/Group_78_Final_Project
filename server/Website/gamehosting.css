@@ -64,12 +64,12 @@ i {
     margin-top: 3%;
     font-size: 50px;
 }
-#gameboard {
+.content {
     background-color: white;
     height: 800px;
-    width: 90%;
-    margin-top: 3%;
-    margin-left: 5%;
+    width: 800px;
+    margin: auto;
+    position: relative;
 }
 
 

@@ -6,7 +6,7 @@ class Register{
     this.width = width
     this.height = height
     this.cost = cost
-    this.asset = loadImage("assets/"+asset)
+    this.asset = loadImage("games/game3/assets/"+asset)
     this.assetHeight = assetHeight
     this.offset = offset
     this.scale = scale

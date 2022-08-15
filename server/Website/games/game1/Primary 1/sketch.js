@@ -1,15 +1,18 @@
-// ***** To change the amount of questions & AI's fishing rod speed, change only these 2 variables *****
+// ===================  To change the amount of questions & AI's fishing rod speed, change only these variables =================== 
 
 //number of questions
-var number_of_questions = 10;
+var number_of_questions = 5;
 
 //fishing rod speed change 
-var ai_rod_line_speed = 0.075;
+var ai_rod_line_speed = 0.05;
 
-// range of numbers to be tested 
-var number_range = 1000;
+// levels array
+var range_of_numbers_by_level = [20, 40, 60, 80, 100];
 
-// ***** DO NOT CHANGE ANY VARIABLE BELOW HERE *****
+// level selected
+var level_selected = 4;
+
+// ===================  DO NOT CHANGE ANY VARIABLE BELOW HERE =================== 
 
 // game state
 var game_start = false;
@@ -51,35 +54,40 @@ function preload()
 {
     soundFormats('mp3');
 
-    bgm = loadSound("sound/Cuckoo Clock Quincas Moreira Background Music Children'sMusic.mp3");
+    bgm = loadSound("games/game1/Primary 1/sound/Cuckoo Clock Quincas Moreira Background Music Children'sMusic.mp3");
     bgm.setVolume(0.2);
 }
 
 function setup()
 {
-	createCanvas(800, 800);
+	//create a canvas to fill the content div from index.html
+	canvasContainer = select('#game1p1');
+	var c = createCanvas(canvasContainer.size().width, canvasContainer.size().height);
+	c.parent("game1p1");
 
-    questions_set = new QuestionAnswerGenerator(number_of_questions, number_range);
+    questions_set = new QuestionAnswerGenerator(number_of_questions, range_of_numbers_by_level[level_selected]);
     scoreboard = new Scoreboard(number_of_questions);
 
     answer_button_width = width/2;
     answer_button_height = height/10;
     
-    player = new CharacterGenerator("assets/player1.png", "assets/player_fish.png",100, 2*height/5-40);
-    ai_character = new CharacterGenerator("assets/ai_fisherman.png", "assets/ai_fish.png",width-150, 2*height/5-40);
+    player = new CharacterGenerator("games/game1/Primary 1/assets/player1.png", "games/game1/Primary 1/assets/player_fish.png",100, 2*height/5-40);
+    ai_character = new CharacterGenerator("games/game1/Primary 1/assets/ai_fisherman.png", "games/game1/Primary 1/assets/ai_fish.png",width-150, 2*height/5-40);
 
-    startpage_background = loadImage("assets/beach_mainpage.png");
+    startpage_background = loadImage("games/game1/Primary 1/assets/beach_mainpage.png");
 
     scenery = new SceneryGenerator(0, height/5, width, 4*height/5);
 
     // Start Button
-    game_start_button = createImg('assets/start-button.png');  
+    game_start_button = createImg('games/game1/Primary 1/assets/start-button.png');  
+    game_start_button.parent("game1p1");
     game_start_button.position(width/4+20, height/4+20);
     game_start_button.mouseClicked(function(){game_start = true;});
 
     //Options Button
     // Option 1
     option1 = createButton("A) ");
+    option1.parent("game1p1");
     option1.position(0, answer_button_height*8);
     option1.size(answer_button_width, answer_button_height);
     option1.style("font-size", '45px');
@@ -87,6 +95,7 @@ function setup()
 
     // Option 2
     option2 = createButton("B) ");
+    option2.parent("game1p1");
     option2.position(answer_button_width, answer_button_height*8);
     option2.size(answer_button_width, answer_button_height);
     option2.style("font-size", '45px');
@@ -94,6 +103,7 @@ function setup()
 
     // Option 3
     option3 = createButton("C) ");
+    option3.parent("game1p1");
     option3.position(0, answer_button_height*9);
     option3.size(answer_button_width, answer_button_height);
     option3.style("font-size", '45px');
@@ -101,6 +111,7 @@ function setup()
 
     // Option 4
     option4 = createButton("D) ");
+    option4.parent("game1p1");
     option4.position(answer_button_width, answer_button_height*9);
     option4.size(answer_button_width, answer_button_height);
     option4.style("font-size", '45px');
@@ -108,10 +119,11 @@ function setup()
 
     // Restart Game Button
     restart_button = createButton("Restart");
+    restart_button.parent("game1p1");
     restart_button.position(width/2 - 105, 2*height/3);
     restart_button.size(210,76);
     restart_button.mouseClicked(restart_game);
-    
+
     player_rod_reduction = player_rod_line_length/number_of_questions;
 }
 
@@ -136,7 +148,7 @@ function draw()
         //fishing mode
         player.displayFishing(player_rod_line_length, "Player");
         ai_character.displayFishing(ai_rod_line_length, "AI");
-        
+
         //display scoreboard
         scoreboard.displayScoreboard();
 
@@ -238,7 +250,7 @@ function restart_game()
     player_rod_line_length = 200;
     ai_rod_line_length = 200;
 
-    questions_set = new QuestionAnswerGenerator(number_of_questions, 100);
+    questions_set = new QuestionAnswerGenerator(number_of_questions, range_of_numbers_by_level[level_selected]);
     scoreboard = new Scoreboard(number_of_questions);
 
     game_stage = 0;

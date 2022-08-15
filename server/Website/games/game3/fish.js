@@ -9,8 +9,8 @@ class Fish{
     //console.log("hello")
     //this.paidArray = this.getPaidArray()
     this.change = paid - cost
-    this.customerAsset = loadImage("assets/" + customerAsset)
-    this.fishAsset = loadImage("assets/" + fishAsset)
+    this.customerAsset = loadImage("games/game3/assets/" + customerAsset)
+    this.fishAsset = loadImage("games/game3/assets/" + fishAsset)
 
   }
   

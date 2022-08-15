@@ -3,12 +3,12 @@ class Game2QuestionAnswerGenerator
 
     constructor()
     {
-        this.rect_fish_1 = new fishes("assets/2D/Rectangle/Rectangle_Fish.png", 'Rectangle');
-        this.rect_fish_2 = new fishes("assets/2D/Rectangle/Rectangle_Fish.png", 'Rectangle');
-        this.square_fish_1 = new fishes("assets/2D/Square/Square_Anglerfish.png", 'Square');
-        this.square_fish_2 = new fishes("assets/2D/Square/Square_Anglerfish.png", 'Square');
-        this.tri_fish_1 = new fishes("assets/2D/Triangle/Triangle_Fish.png", 'Triangle');
-        this.tri_fish_2 = new fishes("assets/2D/Triangle/Triangle_Fish.png", 'Triangle');
+        this.rect_fish_1 = new fishes("games/game2/Primary 3/assets/2D/Rectangle/Rectangle_Fish.png", 'Rectangle');
+        this.rect_fish_2 = new fishes("games/game2/Primary 3/assets/2D/Rectangle/Rectangle_Fish.png", 'Rectangle');
+        this.rect_fish_3 = new fishes("games/game2/Primary 3/assets/2D/Rectangle/Rectangle_Fish.png", 'Rectangle');
+        this.square_fish_1 = new fishes("games/game2/Primary 3/assets/2D/Square/Square_Anglerfish.png", 'Square');
+        this.square_fish_2 = new fishes("games/game2/Primary 3/assets/2D/Square/Square_Anglerfish.png", 'Square');
+        this.square_fish_3 = new fishes("games/game2/Primary 3/assets/2D/Square/Square_Anglerfish.png", 'Square');
 
         // this.shape_array = ["Cone", "Cube", "Cuboid", "Cylinder", "Sphere"];
         this.question_type = ['perimeter', 'area'];
@@ -148,8 +148,8 @@ class Game2QuestionAnswerGenerator
         this.fish_array.push(this.rect_fish_2);
         this.fish_array.push(this.square_fish_1);
         this.fish_array.push(this.square_fish_2);
-        this.fish_array.push(this.tri_fish_1);
-        this.fish_array.push(this.tri_fish_2);
+        this.fish_array.push(this.rect_fish_3);
+        this.fish_array.push(this.square_fish_3);
      }
 
      #shuffle_array(array_to_shuffle)
