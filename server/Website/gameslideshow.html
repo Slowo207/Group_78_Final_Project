@@ -8,22 +8,11 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"
     integrity="sha384-eoTu3+HydHRBIjnCVwsFyCpUDZHZSFKEJD0mc3ZqSBSb6YhZzRHeiomAUWCstIWo" crossorigin="anonymous">
   <title>MATHQUARIUM</title>
+  <script src="websitestate.js"></script>
 </head>
 
 <body id="bodmain">
-  <nav>
-    <ul>
-      <a href="index.html">
-        <li><i class="fa fa bi-house-fill"></i>Home</li>
-      </a>
-      <a href="grades.html">
-        <li><i class="fa fa bi-house-fill"></i>Grades</li>
-      </a>
-      <a href="about.html">
-        <li><i class="fa fa bi-house-fill"></i>About</li>
-      </a>
-    </ul>
-  </nav>
+  <div w3-include-html="navbar.html"></div>
 
   <!-- Slideshow container -->
   <h1 id="slideshowh1">GAMES</h1>
@@ -34,8 +23,8 @@
     <!-- Full-width images with number and caption text -->
     <div class="mySlides fade">
       <div class="numbertext">1 / 3</div>
-      <a href="P1G1.html" style="text-decoration: none;">
-        <img src="pictures/games/game1.jpg" width="200" height="400" style="width:100%">
+      <a href="levels.html" style="text-decoration: none;">
+        <img src="pictures/games/game1.jpg" width="200" height="400" style="width:100%" onclick="game1()">
       </a>
       <div>
         <h1>Hints:</h1>
@@ -48,8 +37,8 @@
 
     <div class="mySlides fade">
       <div class="numbertext">2 / 3</div>
-      <a href="P1G2.html" style="text-decoration: none;">
-        <img src="pictures/games/g2.PNG" width="200" height="400" style="width:100%">
+      <a href="g2gamehosting.html" style="text-decoration: none;">
+        <img src="pictures/games/g2.PNG" width="200" height="400" style="width:100%" onclick="game2()">
       </a>
       <div>
         <h1>Hints:</h1>
@@ -62,8 +51,8 @@
 
     <div class="mySlides fade">
       <div class="numbertext">3 / 3</div>
-      <a href="P1G3.html" style="text-decoration: none;">
-        <img src="pictures/games/g3.PNG" width="200" height="400" style="width:100%">
+      <a href="levels.html" style="text-decoration: none;">
+        <img src="pictures/games/g3.PNG" width="200" height="400" style="width:100%" onclick="game3()">
       </a>
       <div>
         <h1>Hints:</h1>
@@ -86,19 +75,13 @@
     <span class="dot" onclick="currentSlide(2)"></span>
     <span class="dot" onclick="currentSlide(3)"></span>
   </div>
-  <footer id="footer">
-    <div class="our info">
-      <h1>Contact Us</h1>
-      <div class="social-info">
+  
+  <div w3-include-html="footer.html"></div>
 
-        <a href=""><span class="fa bi-facebook"></a>
-        <a href=""><span class="fa fa bi-instagram"></a>
-        <a href=""><span class="fa fa bi-telephone-fill"></a>
-
-      </div>
-    </div>
-  </footer>
-
+  <script src="includehtml.js"></script>
+  <script>
+    includeHTML();
+  </script>
 </body>
 
 </html>

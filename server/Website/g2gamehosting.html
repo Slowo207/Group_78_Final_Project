@@ -11,19 +11,7 @@
 </head>
 
 <body>
-    <nav>
-        <ul>
-            <a href="index.html">
-                <li><i class="fa fa bi-house-fill"></i>Home</li>
-            </a>
-            <a href="grades.html">
-                <li><i class="fa fa bi-house-fill"></i>Grades</li>
-            </a>
-            <a href="about.html">
-                <li><i class="fa fa bi-house-fill"></i>About</li>
-            </a>
-        </ul>
-    </nav>
+    <div w3-include-html="navbar.html"></div>
 
     <h1 class="gameh1">Game name</h1>
     <div class="content" id="game2p1"></div>
@@ -41,18 +29,13 @@
         </form>
 
     </div>
-    <footer id="footer">
-        <div class="our info">
-            <h1>Contact Us</h1>
-            <div class="social-info">
 
-                <a href=""><span class="fa bi-facebook"></a>
-                <a href=""><span class="fa fa bi-instagram"></a>
-                <a href=""><span class="fa fa bi-telephone-fill"></a>
+    <div w3-include-html="footer.html"></div>
 
-            </div>
-        </div>
-    </footer>
+    <script src="includehtml.js"></script>
+    <script>
+        includeHTML();
+    </script>
 
     <script src="games/game2/Primary 1/lib/p5.min.js"></script>
     <script src="games/game2/Primary 1/lib/p5.dom.js"></script>
@@ -62,7 +45,6 @@
     
     <script src="games/game2/Primary 1/Game2QuestionsAnswersGenerator.js"></script>
     <script src="games/game2/Primary 1/fishes.js"></script>
-
 </body>
 
 

@@ -59,7 +59,7 @@ i {
 }
 
 
-.Game_Name {
+#Game_Name {
     text-align: center;
     font-size: 60px;
     color: blue;

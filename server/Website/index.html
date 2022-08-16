@@ -10,22 +10,8 @@
     <title>MATHQUARIUM</title>
 </head>
 
-<nav>
-    <ul>
-        <a href="index.html">
-            <li><i class="fa fa bi-house-fill"></i>Home</li>
-        </a>
-        <a href="grades.html">
-            <li><i class="fa fa bi-house-fill"></i>Grades</li>
-        </a>
-        <a href="about.html">
-            <li><i class="fa fa bi-house-fill"></i>About</li>
-        </a>
-    </ul>
-</nav>
-
 <body id="bodymain">
-
+    <div w3-include-html="navbar.html"></div>
 
     <div id="title-container">
         <h1 class="homeh1">MATHQUARIUM</h1>
@@ -33,19 +19,13 @@
             <button type="button" class="play_button" type="button">PLAY</button>
         </a>
     </div>
-    <footer id="footer">
-        <div class="our info">
-            <h1>Contact Us</h1>
-            <div class="social-info">
+    
+    <div w3-include-html="footer.html"></div>
 
-                <a href=""><span class="fa bi-facebook"></a>
-                <a href=""><span class="fa fa bi-instagram"></a>
-                <a href=""><span class="fa fa bi-telephone-fill"></a>
-
-            </div>
-        </div>
-    </footer>
-
+    <script src="includehtml.js"></script>
+    <script>
+        includeHTML();
+    </script>
 </body>
 
 </html>
