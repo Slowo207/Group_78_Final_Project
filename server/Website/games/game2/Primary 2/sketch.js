@@ -41,7 +41,7 @@ function setup()
 	var c = createCanvas(canvasContainer.size().width, canvasContainer.size().height);
 	c.parent("game2p2");
 
-    textFront(sassoon);
+    textFont(sassoon);
 
     questions_set = new Game2QuestionAnswerGenerator();
 
