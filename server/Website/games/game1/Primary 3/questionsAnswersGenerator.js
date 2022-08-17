@@ -18,7 +18,7 @@ class QuestionAnswerGenerator
         '+': function (x, y) { return x + y },
         '-': function (x, y) { return x - y },
         '*': function (x, y) { return x * y },
-        '➗': function (x, y) { return x / y}
+        '÷': function (x, y) { return x / y}
     };
 
      // a private method to populate the array with 5 questions.
@@ -27,7 +27,7 @@ class QuestionAnswerGenerator
          for(let i = 0; i < amount_of_questions; ++i)
             {
                 let int1, int2, int3;
-                let operatorsArray = ['+', '-', '*', '➗'];
+                let operatorsArray = ['+', '-', '*', '÷'];
                 let operator = random(operatorsArray);
                 
                 if(operator == '*')
@@ -35,7 +35,7 @@ class QuestionAnswerGenerator
                     int1 = floor(random(1, multiplication_range + 1));
                     int2 = floor(random(1, multiplication_range + 1));
                 }
-                else if (operator == '➗')
+                else if (operator == '÷')
                 {
                     int2 = floor(random(1, multiplication_range + 1));
                     int3 = floor(random(1, multiplication_range + 1));
