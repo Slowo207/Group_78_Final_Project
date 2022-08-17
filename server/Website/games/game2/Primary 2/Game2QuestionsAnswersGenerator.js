@@ -55,7 +55,7 @@ class Game2QuestionAnswerGenerator
             toggle_options = !toggle_options;
             this.attempts++;
             this.isWrong = false;
-            
+
             correct_answer_sound.stop();
             correct_answer_sound.play();
             
@@ -74,18 +74,18 @@ class Game2QuestionAnswerGenerator
 
         // Scoreboard background
         fill("#4d92b2");
-        rect(width/2 - 105, height/5, 210, 2*height/5+52);
+        rect(width/3 - 50, height/5, 360, 2*height/5+52);
 
         // heading
         fill(0);
         textAlign(CENTER,CENTER);
-        textSize(35);
-        text("Attempts: ", width/2, height/5 + 50);
+        textSize(30);
+        text("Total attempts needed \n to complete the game: ", width/2, height/3);
 
         // Score
         fill("#6effa9");
         textSize(50);
-        text(this.attempts, width/2, 2*height/5);
+        text(this.attempts, width/2, height/3 + 125);
 
         pop();
      }

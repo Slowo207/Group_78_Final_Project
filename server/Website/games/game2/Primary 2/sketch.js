@@ -32,6 +32,7 @@ function preload()
     bgm.setVolume(0.2);
 
     correct_answer_sound = loadSound("games/game1/Primary 1/sound/correct_answer.mp3");
+    correct_answer_sound.setVolume(0.8);
 
     sassoon = loadFont("fonts/Sassoon-Primary.otf");
 }
@@ -94,8 +95,8 @@ function setup()
     // Restart Game Button
     restart_button = createButton("Restart");
     restart_button.parent("game2p2");
-    restart_button.position(width/2 - 105, 2*height/3);
-    restart_button.size(210,76);
+    restart_button.position(width/3 - 50, 2*height/3);
+    restart_button.size(360,76);
     restart_button.mouseClicked(restart_game);
 }
 

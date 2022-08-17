@@ -95,7 +95,7 @@ class QuestionAnswerGenerator
 
             correct_answer_sound.stop();
             correct_answer_sound.play();
-            
+
             if(!gameEnded)
             {
                 this.attempts++;
@@ -118,14 +118,14 @@ class QuestionAnswerGenerator
 
         // Scoreboard background
         fill("#4d92b2");
-        rect(width/2 - 105, height/5, 210, 2*height/5+52);
+        rect(width/3 - 50, height/5, 360, 2*height/5+52);
 
         // heading
         fill(0);
         textAlign(CENTER,CENTER);
-        textSize(35);
-        text("Attempts: ", width/2, height/5 + 50);
-        text("Time: ", width/2, 2.5*height/5);
+        textSize(30);
+        text("Total attempts needed \n to complete the game: ", width/2, height/5 + 50);
+        text("Time Taken: ", width/2, 2.5*height/5);
 
         // Score
         fill("#6effa9");
