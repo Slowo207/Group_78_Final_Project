@@ -31,6 +31,8 @@ function preload()
     bgm = loadSound("games/game2/Primary 3/sounds/Summer - Bensound - Royalty Free Music - No Copyright Music.mp3");
     bgm.setVolume(0.2);
 
+    correct_answer_sound = loadSound("games/game1/Primary 1/sound/correct_answer.mp3");
+
     sassoon = loadFont("fonts/Sassoon-Primary.otf");
 }
 

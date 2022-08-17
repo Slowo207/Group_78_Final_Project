@@ -57,6 +57,10 @@ class Game2QuestionAnswerGenerator
             toggle_options = !toggle_options;
             this.attempts++;
             this.isWrong = false;
+            
+            correct_answer_sound.stop();
+            correct_answer_sound.play();
+            
         }
         else
         {

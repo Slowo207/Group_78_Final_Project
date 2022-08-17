@@ -60,6 +60,8 @@ function preload()
     bgm = loadSound("games/game1/Primary 2/sound/Cuckoo Clock Quincas Moreira Background Music Children'sMusic.mp3");
     bgm.setVolume(0.2);
 
+    correct_answer_sound = loadSound("games/game1/Primary 2/sound/correct_answer.mp3");
+
     sassoon = loadFont("fonts/Sassoon-Primary.otf");
 }
 

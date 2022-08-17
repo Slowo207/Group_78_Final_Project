@@ -92,6 +92,10 @@ class QuestionAnswerGenerator
             player_rod_line_length -= rod_reduction;
             this.marks++;
             this.isWrong = false;
+
+            correct_answer_sound.stop();
+            correct_answer_sound.play();
+            
             if(!gameEnded)
             {
                 this.attempts++;
