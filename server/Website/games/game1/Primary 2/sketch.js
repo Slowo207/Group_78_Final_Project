@@ -59,6 +59,8 @@ function preload()
 
     bgm = loadSound("games/game1/Primary 2/sound/Cuckoo Clock Quincas Moreira Background Music Children'sMusic.mp3");
     bgm.setVolume(0.2);
+
+    sassoon = loadFont("fonts/Sassoon-Primary.otf");
 }
 
 function setup()
@@ -67,6 +69,8 @@ function setup()
 	canvasContainer = select('#game1p2');
 	var c = createCanvas(canvasContainer.size().width, canvasContainer.size().height);
 	c.parent("game1p2");
+
+    textFont(sassoon);
 
     questions_set = new QuestionAnswerGenerator(number_of_questions, range_of_numbers_by_level[level_selected], multiplication_range[level_selected]);
     scoreboard = new Scoreboard(number_of_questions);

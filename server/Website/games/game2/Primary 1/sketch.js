@@ -30,6 +30,8 @@ function preload()
 
     bgm = loadSound("games/game2/Primary 1/sounds/Summer - Bensound - Royalty Free Music - No Copyright Music.mp3");
     bgm.setVolume(0.2);
+
+    sassoon = loadFont("fonts/Sassoon-Primary.otf");
 }
 
 function setup()
@@ -38,6 +40,8 @@ function setup()
 	canvasContainer = select('#game2p1');
 	var c = createCanvas(canvasContainer.size().width, canvasContainer.size().height);
 	c.parent("game2p1");
+
+    textFont(sassoon);
 
     questions_set = new Game2QuestionAnswerGenerator();
 
