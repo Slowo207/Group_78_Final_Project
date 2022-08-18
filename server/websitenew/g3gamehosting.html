@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width = device - width, intial-scale = 1.0">
+    <link rel="stylesheet" href="gamehosting.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"
+        integrity="sha384-eoTu3+HydHRBIjnCVwsFyCpUDZHZSFKEJD0mc3ZqSBSb6YhZzRHeiomAUWCstIWo" crossorigin="anonymous">
+    <title>MATHQUARIUM</title>
+</head>
+
+<body>
+    <div w3-include-html="navbar.html"></div>
+    <a id="exit" href="grades.html">exit
+    </a>
+    <h1 class="gameh1">Game name</h1>
+    <div class="content" id="game3p1"></div>
+
+    <div w3-include-html="footer.html"></div>
+
+    <script src="includehtml.js"></script>
+    <script>
+        includeHTML();
+    </script>
+
+    <script src="games/game3/lib/p5.min.js"></script>
+    <script src="games/game3/lib/p5.dom.js"></script>
+
+    <script src="games/game3/sketch.js"></script>
+
+    <script src="games/game3/fish.js"></script>
+    <script src="games/game3/change.js"></script>
+    <script src="games/game3/register.js"></script>
+</body>
+
+
+</html>
