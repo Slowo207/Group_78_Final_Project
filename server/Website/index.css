@@ -72,8 +72,7 @@ i {
 
 .homeh1 {
     text-align: center;
-    margin-left: 32%;
-    margin-top: 200px;
+    margin: 200px auto;
     font-size: 80px;
     width: fit-content;
     background-color: #228aff;
@@ -81,6 +80,11 @@ i {
     padding-right: 20px;
     color: white;
     font-family: sass;
+}
+
+#play_button_homepage{
+    text-align: center;
+    margin: auto;
 }
 
 .play_button {
@@ -93,9 +97,7 @@ i {
     padding: 16px 32px;
     font-size: 16px;
     cursor: pointer;
-    position: absolute;
-    top: 50%;
-    left: 45%;
+    position: relative;
 }
 .play_button:hover {
     background-color: #7ec9ff;
