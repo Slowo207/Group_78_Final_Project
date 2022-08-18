@@ -1,5 +1,6 @@
 * {
     margin: 0;
+    padding: 0;
 }
 
 * {
@@ -67,10 +68,6 @@ i {
     font-size: 40px;
 }
 
-.aboutContent p{
-    padding-top: 1%;
-}
-
 .about2 {
     font-size: 40px;
     margin-top: 20px;
@@ -84,14 +81,14 @@ h3{
     padding-left: 20px;
     padding-top: 10px;
 }
-ul {
-    padding-left: 40px;
-}
 
 /*creating two equal column */
 .column {
     float: left;
     padding: 10px;
+}
+.column ul{
+    padding-left: 5%;
 }
 
 .left {
