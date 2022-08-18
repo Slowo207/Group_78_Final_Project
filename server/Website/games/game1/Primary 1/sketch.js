@@ -54,10 +54,10 @@ function preload()
 {
     soundFormats('mp3');
 
-    bgm = loadSound("games/game1/Primary 1/sound/Cuckoo Clock Quincas Moreira Background Music Children'sMusic.mp3");
+    bgm = loadSound("games/game1/sounds/Cuckoo Clock Quincas Moreira Background Music Children'sMusic.mp3");
     bgm.setVolume(0.2);
 
-    correct_answer_sound = loadSound("games/game1/Primary 1/sound/correct_answer.mp3");
+    correct_answer_sound = loadSound("games/game1/sounds/correct_answer.mp3");
     correct_answer_sound.setVolume(0.8);
     
     sassoon = loadFont("fonts/Sassoon-Primary.otf");
@@ -78,15 +78,16 @@ function setup()
     answer_button_width = width/2;
     answer_button_height = height/10;
     
-    player = new CharacterGenerator("games/game1/Primary 1/assets/player1.png", "games/game1/Primary 1/assets/player_fish.png",100, 2*height/5-40);
-    ai_character = new CharacterGenerator("games/game1/Primary 1/assets/ai_fisherman.png", "games/game1/Primary 1/assets/ai_fish.png",width-150, 2*height/5-40);
+    player = new CharacterGenerator("games/game1/assets/player1.png", "games/game1/assets/player_fish.png",100, 2*height/5-40);
+    ai_character = new CharacterGenerator("games/game1/assets/ai_fisherman.png", "games/game1/assets/ai_fish.png",width-150, 2*height/5-40);
 
-    startpage_background = loadImage("games/game1/Primary 1/assets/beach_mainpage.png");
+    startpage_background = loadImage("games/game1/assets/beach_mainpage.png");
 
-    scenery = new SceneryGenerator(0, height/5, width, 4*height/5);
+    sky_bg = loadImage('games/game1/assets/game1_sky_bg.png');
+    underwater_bg = loadImage('games/game1/assets/game1_underwater_bg.png');
 
     // Start Button
-    game_start_button = createImg('games/game1/Primary 1/assets/start-button.png');  
+    game_start_button = createImg('games/game1/assets/start-button.png');  
     game_start_button.parent("game1p1");
     game_start_button.position(width/4+20, height/4+20);
     game_start_button.mouseClicked(function(){game_start = true;});
@@ -146,7 +147,8 @@ function draw()
         }
 
         //game scenery
-        scenery.displayScenery();
+        image(sky_bg,0,0);
+        image(underwater_bg,0,height/3 + 50);
 
         //game characters
         player.displayChar();
@@ -272,10 +274,11 @@ function restart_game()
 function gameTimer()
 {
   push();
-  fill(255,0,0);
-  stroke(255,0,0);
-  textSize(35);
-  text("Time: " + timer.toFixed(1) + " seconds", 10,  30);
+  fill(255);
+  stroke(255);
+  textSize(45);
+  textAlign(CENTER);
+  text("Time: " + timer.toFixed(1) + " seconds", width/2,  height/2 + 50);
   pop();
 
   timer += deltaTime/1000;
@@ -284,10 +287,10 @@ function gameTimer()
 function printRetry()
 {
     push();
-    fill("#6effa9");
-    stroke("#6effa9");
+    fill(255,0,0);
+    stroke(255,0,0);
     textSize(35);
-    textAlign(CENTER,CENTER);
+    textAlign(CENTER);
     text("Incorrect, please try again!", width/2, 3*height/4);
     pop();
 }
