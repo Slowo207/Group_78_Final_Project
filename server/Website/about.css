@@ -58,15 +58,17 @@ i {
 
 /* about page body */
 #aboutMain {
-    margin-top: 30px;
+    margin-top: 2%;
+    margin-left: 1%;
 
 }
 
 .about1 {
     font-size: 40px;
 }
+
 .aboutContent p{
-    padding: 10px;
+    padding-top: 1%;
 }
 
 .about2 {

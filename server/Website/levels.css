@@ -60,9 +60,9 @@ i {
 
 
 #Game_Name {
-    text-align: center;
     font-size: 60px;
-    color: blue;
+    text-align: center;
+    margin-top: 2%;
 }
 
 a.disabled {
