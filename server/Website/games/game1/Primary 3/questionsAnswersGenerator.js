@@ -62,13 +62,33 @@ class QuestionAnswerGenerator
             // Populate the set with random options without duplicates
             for(let j = 0; j < 3; ++j)
             {
-                let int1 = floor(random(0, range_of_numbers));
-                // Check for duplicates
-                while(answer_set.has(int1))
+                let offset = floor(random(0, 20));
+                let generated_option = 0;
+                let temp_operator_arr = ['+', '-'];
+                if(this.answers[i] > offset)
                 {
-                    int1 = floor(random(0, range_of_numbers));
+                    let random_operator = random(temp_operator_arr);
+                    generated_option = this.char_to_operator[random_operator](this.answers[i],offset);
                 }
-                answer_set.add(int1);
+                else
+                {
+                    generated_option = this.answers[i] + offset;
+                }
+                // Check for duplicates
+                while(answer_set.has(generated_option))
+                {
+                    offset = floor(random(0, 20));
+                    if(this.answers[i] > offset)
+                    {
+                        let random_operator = random(temp_operator_arr);
+                        generated_option = this.char_to_operator[random_operator](this.answers[i],offset);
+                    }
+                    else
+                    {
+                        generated_option = this.answers[i] + offset;
+                    }
+                }
+                answer_set.add(generated_option);
             }
 
             // Converting the set to an array

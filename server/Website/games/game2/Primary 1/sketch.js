@@ -28,10 +28,10 @@ function preload()
 {
     soundFormats('mp3');
 
-    bgm = loadSound("games/game2/Primary 1/sounds/Summer - Bensound - Royalty Free Music - No Copyright Music.mp3");
+    bgm = loadSound("games/game2/sounds/Summer - Bensound - Royalty Free Music - No Copyright Music.mp3");
     bgm.setVolume(0.2);
 
-    correct_answer_sound = loadSound("games/game1/Primary 1/sound/correct_answer.mp3");
+    correct_answer_sound = loadSound("games/game2/sounds/correct_answer.mp3");
     correct_answer_sound.setVolume(0.8);
 
     sassoon = loadFont("fonts/Sassoon-Primary.otf");
@@ -51,10 +51,10 @@ function setup()
     answer_button_width = width/2;
     answer_button_height = height/10;
 
-    homepage = loadImage("games/game2/Primary 1/assets/game2_homepage.png");
+    homepage = loadImage("games/game2/assets/game2_homepage.png");
 
     // Start Button
-    game_start_button = createImg('games/game2/Primary 1/assets/start-button.png');  
+    game_start_button = createImg('games/game2/assets/start-button.png');  
     game_start_button.parent("game2p1");
     game_start_button.position(width/4+20, height/4+20);
     game_start_button.mouseClicked(function(){game_start = true;});

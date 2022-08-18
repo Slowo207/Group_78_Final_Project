@@ -9,6 +9,7 @@ class QuestionAnswerGenerator
         this.answers = [];
         this.attempts = 0;
         this.isWrong = false;
+        this.operatorsArray = ['+', '-'];
         this.#generateQuestions(amount_of_questions, range_of_numbers);
         this.#generateAnswers(amount_of_questions, range_of_numbers);
     }
@@ -26,8 +27,7 @@ class QuestionAnswerGenerator
             {
                 let int1 = floor(random(1, floor(range_of_numbers/2)+1));
                 let int2 = floor(random(int1));
-                let operatorsArray = ['+', '-'];
-                let operator = random(operatorsArray);
+                let operator = random(this.operatorsArray);
                 this.questions.push("What is " + int1 + " " + operator + " " + int2 + "?");
                 this.answers.push(this.char_to_operator[operator](int1,int2));
             }
@@ -38,18 +38,37 @@ class QuestionAnswerGenerator
         for(let i = 0; i < amount_of_questions; ++i )
         {
             // Insert the correct answer into the set
-            let answer_set = new Set([this.answers[i]]);
+            let answer_set = new Set([this.answers[i]]); 
 
             // Populate the set with random options without duplicates
             for(let j = 0; j < 3; ++j)
             {
-                let int1 = floor(random(0, range_of_numbers));
-                // Check for duplicates
-                while(answer_set.has(int1))
+                let offset = floor(random(0, 5));
+                let generated_option = 0;
+                if(this.answers[i] > offset)
                 {
-                    int1 = floor(random(0, range_of_numbers));
+                    let random_operator = random(this.operatorsArray);
+                    generated_option = this.char_to_operator[random_operator](this.answers[i],offset);
                 }
-                answer_set.add(int1);
+                else
+                {
+                    generated_option = this.answers[i] + offset;
+                }
+                // Check for duplicates
+                while(answer_set.has(generated_option))
+                {
+                    offset = floor(random(0, 5));
+                    if(this.answers[i] > offset)
+                    {
+                        let random_operator = random(this.operatorsArray);
+                        generated_option = this.char_to_operator[random_operator](this.answers[i],offset);
+                    }
+                    else
+                    {
+                        generated_option = this.answers[i] + offset;
+                    }
+                }
+                answer_set.add(generated_option);
             }
 
             // Converting the set to an array
@@ -59,6 +78,7 @@ class QuestionAnswerGenerator
             this.#shuffle_array(temp_arr);
 
             this.answers_options.push(temp_arr);
+
         }
      }
 
