@@ -125,13 +125,33 @@ class Game2QuestionAnswerGenerator
             // Populate the set with random options without duplicates
             for(let j = 0; j < 3; ++j)
             {
-                let randomize_option = floor(random(0, 1000));
-                // Check for duplicates
-                while(option_set.has(randomize_option))
+                let offset = floor(random(0, 20));
+                let generated_option = 0;
+                let temp_operator_arr = ['+', '-'];
+                if(this.answers[i] > offset)
                 {
-                    int1 = floor(random(0, 1000));
+                    let random_operator = random(temp_operator_arr);
+                    generated_option = this.char_to_operator[random_operator](this.answers[i],offset);
                 }
-                option_set.add(randomize_option);
+                else
+                {
+                    generated_option = this.answers[i] + offset;
+                }
+                // Check for duplicates
+                while(option_set.has(generated_option))
+                {
+                    offset = floor(random(0, 20));
+                    if(this.answers[i] > offset)
+                    {
+                        let random_operator = random(temp_operator_arr);
+                        generated_option = this.char_to_operator[random_operator](this.answers[i],offset);
+                    }
+                    else
+                    {
+                        generated_option = this.answers[i] + offset;
+                    }
+                }
+                option_set.add(generated_option);
             }
 
             // Converting the set to an array
@@ -143,30 +163,36 @@ class Game2QuestionAnswerGenerator
         }
     }
 
-     // private helper functions
+    // private helper functions
 
-     #add_fishes()
-     {
-        this.fish_array.push(this.rect_fish_1);
-        this.fish_array.push(this.rect_fish_2);
-        this.fish_array.push(this.square_fish_1);
-        this.fish_array.push(this.square_fish_2);
-        this.fish_array.push(this.rect_fish_3);
-        this.fish_array.push(this.square_fish_3);
-     }
+    #add_fishes()
+    {
+    this.fish_array.push(this.rect_fish_1);
+    this.fish_array.push(this.rect_fish_2);
+    this.fish_array.push(this.square_fish_1);
+    this.fish_array.push(this.square_fish_2);
+    this.fish_array.push(this.rect_fish_3);
+    this.fish_array.push(this.square_fish_3);
+    }
 
-     #shuffle_array(array_to_shuffle)
-     {
-        let randomized_index = 0;
-        let temp_element = 0;
-        let size = array_to_shuffle.length;
+    #shuffle_array(array_to_shuffle)
+    {
+    let randomized_index = 0;
+    let temp_element = 0;
+    let size = array_to_shuffle.length;
 
-        for(let i = size - 1; i > 0; i--)
-        {
-            randomized_index = floor(random(i+1));
-            temp_element = array_to_shuffle[i];
-            array_to_shuffle[i] = array_to_shuffle[randomized_index];
-            array_to_shuffle[randomized_index] = temp_element;
-        }
-     }
+    for(let i = size - 1; i > 0; i--)
+    {
+        randomized_index = floor(random(i+1));
+        temp_element = array_to_shuffle[i];
+        array_to_shuffle[i] = array_to_shuffle[randomized_index];
+        array_to_shuffle[randomized_index] = temp_element;
+    }
+    }
+
+    char_to_operator = 
+    {
+        '+': function (x, y) { return x + y },
+        '-': function (x, y) { return x - y }
+    };
 };

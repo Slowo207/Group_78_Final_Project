@@ -10,7 +10,7 @@ var ai_rod_line_speed = 0.05;
 var range_of_numbers_by_level = [20, 40, 60, 80, 100];
 
 // level selected
-var level_selected = 4;
+var level_selected = localStorage.getItem("level");
 
 // ===================  DO NOT CHANGE ANY VARIABLE BELOW HERE =================== 
 
@@ -31,6 +31,7 @@ var option1, option2, option3, option4;
 var toggle_options = true;
 var toggle_timer = true;
 var toggle_bgm = true;
+var toggle_celebration_sound = true;
 
 // buttons dimension
 var answer_button_width;
@@ -52,13 +53,16 @@ var bgm;
 
 function preload()
 {
-    soundFormats('mp3');
+    soundFormats('mp3','wav');
 
     bgm = loadSound("games/game1/sounds/Cuckoo Clock Quincas Moreira Background Music Children'sMusic.mp3");
     bgm.setVolume(0.2);
 
     correct_answer_sound = loadSound("games/game1/sounds/correct_answer.mp3");
     correct_answer_sound.setVolume(0.8);
+
+    celebration_sound = loadSound("games/game1/sounds/Celebration.wav");
+    celebration_sound.setVolume(0.1);
     
     sassoon = loadFont("fonts/Sassoon-Primary.otf");
 }
@@ -99,6 +103,7 @@ function setup()
     option1.position(0, answer_button_height*8);
     option1.size(answer_button_width, answer_button_height);
     option1.style("font-size", '45px');
+    option1.style("font-family", "sass");
     option1.mouseClicked(function(){questions_set.checkAnswer(game_stage, option1.value(),scoreboard, option1, gameEnded, player_rod_reduction)});
 
     // Option 2
@@ -107,6 +112,7 @@ function setup()
     option2.position(answer_button_width, answer_button_height*8);
     option2.size(answer_button_width, answer_button_height);
     option2.style("font-size", '45px');
+    option2.style("font-family", "sass");
     option2.mouseClicked(function(){questions_set.checkAnswer(game_stage, option2.value(),scoreboard, option2, gameEnded, player_rod_reduction)});
 
     // Option 3
@@ -115,6 +121,7 @@ function setup()
     option3.position(0, answer_button_height*9);
     option3.size(answer_button_width, answer_button_height);
     option3.style("font-size", '45px');
+    option3.style("font-family", "sass");
     option3.mouseClicked(function(){questions_set.checkAnswer(game_stage, option3.value(),scoreboard, option3, gameEnded, player_rod_reduction)});
 
     // Option 4
@@ -123,10 +130,13 @@ function setup()
     option4.position(answer_button_width, answer_button_height*9);
     option4.size(answer_button_width, answer_button_height);
     option4.style("font-size", '45px');
+    option4.style("font-family", "sass");
     option4.mouseClicked(function(){questions_set.checkAnswer(game_stage, option4.value(),scoreboard, option4, gameEnded, player_rod_reduction)});
 
     // Restart Game Button
     restart_button = createButton("Restart");
+    restart_button.style("font-family", "sass");
+    restart_button.style("font-size", '45px');
     restart_button.parent("game1p1");
     restart_button.position(width/3 - 50, 2*height/3);
     restart_button.size(360,76);
@@ -192,6 +202,10 @@ function draw()
             questions_set.displayEndGameMarks(completionTime);
             timer = 0;
             endBGM();
+            if(toggle_celebration_sound)
+            {
+                startCelebrationSound();
+            }
         }
 
         ai_rod_line_length -= ai_rod_line_speed;
@@ -269,6 +283,8 @@ function restart_game()
     gameEnded = false;
 
     ai_rod_line_speed = 0.05;
+
+    endCelebrationSound();
 }
 
 function gameTimer()
@@ -288,7 +304,7 @@ function printRetry()
 {
     push();
     fill(255,0,0);
-    stroke(255,0,0);
+    stroke(0);
     textSize(35);
     textAlign(CENTER);
     text("Incorrect, please try again!", width/2, 3*height/4);
@@ -307,4 +323,18 @@ function endBGM()
 {
     bgm.stop();
     toggle_bgm = !toggle_bgm;
+}
+
+function startCelebrationSound()
+{
+    celebration_sound.play();
+    celebration_sound.loop();
+
+    toggle_celebration_sound = !toggle_celebration_sound;
+}
+
+function endCelebrationSound()
+{
+    celebration_sound.stop();
+    toggle_celebration_sound = !toggle_celebration_sound;
 }

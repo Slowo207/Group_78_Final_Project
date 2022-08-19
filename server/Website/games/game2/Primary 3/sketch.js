@@ -65,7 +65,8 @@ function setup()
     option1.parent("game2p3");
     option1.position(0, answer_button_height*8);
     option1.size(answer_button_width, answer_button_height);
-    option1.style("font-size", '30px');
+    option1.style("font-size", '45px');
+    option1.style("font-family", "sass");
     option1.mouseClicked(function(){questions_set.checkAnswer(game_stage, option1.value(), option1)});
 
     // Option 2
@@ -73,7 +74,8 @@ function setup()
     option2.parent("game2p3");
     option2.position(answer_button_width, answer_button_height*8);
     option2.size(answer_button_width, answer_button_height);
-    option2.style("font-size", '30px');
+    option2.style("font-size", '45px');
+    option2.style("font-family", "sass");
     option2.mouseClicked(function(){questions_set.checkAnswer(game_stage, option2.value(), option2)});
 
     // Option 3
@@ -81,7 +83,8 @@ function setup()
     option3.parent("game2p3");
     option3.position(0, answer_button_height*9);
     option3.size(answer_button_width, answer_button_height);
-    option3.style("font-size", '30px');
+    option3.style("font-size", '45px');
+    option3.style("font-family", "sass");
     option3.mouseClicked(function(){questions_set.checkAnswer(game_stage, option3.value(), option3)});
 
     // Option 4
@@ -89,12 +92,15 @@ function setup()
     option4.parent("game2p3");
     option4.position(answer_button_width, answer_button_height*9);
     option4.size(answer_button_width, answer_button_height);
-    option4.style("font-size", '30px');
+    option4.style("font-size", '45px');
+    option4.style("font-family", "sass");
     option4.mouseClicked(function(){questions_set.checkAnswer(game_stage, option4.value(), option4)});
 
     // Restart Game Button
     restart_button = createButton("Restart");
     restart_button.parent("game2p3");
+    restart_button.style("font-size", '45px');
+    restart_button.style("font-family", "sass");
     restart_button.position(width/3 - 50, 2*height/3);
     restart_button.size(360,76);
     restart_button.mouseClicked(restart_game);
