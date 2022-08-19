@@ -30,6 +30,9 @@ function game3()
   localStorage.setItem("game", 3);
 }
 
+var grade = localStorage.getItem("grade");
+var game = localStorage.getItem("game");
+
 /* set level state */
 function setLevelPage()
 {
@@ -42,25 +45,14 @@ function setLevelPage()
 function setLevelTitle()
 {
   //change title text to correct grade
-  if(localStorage.getItem("grade") == 1)
-  {
-    document.getElementById("Game_Name").innerHTML = "Primary 1"
-  }
-  else if(localStorage.getItem("grade") == 2)
-  {
-    document.getElementById("Game_Name").innerHTML = "Primary 2"
-  }
-  else if(localStorage.getItem("grade") == 3)
-  {
-    document.getElementById("Game_Name").innerHTML = "Primary 3"
-  }
+  document.getElementById("Game_Name").innerHTML = "Primary " + grade;
 
   //add game name to title text
-  if(localStorage.getItem("game") == 1)
+  if(game == 1)
   {
     document.getElementById("Game_Name").innerHTML += " Fishing Race"
   }
-  else if(localStorage.getItem("game") == 3)
+  else if(game == 3)
   {
     document.getElementById("Game_Name").innerHTML += " Fish Market"
   }
@@ -104,41 +96,11 @@ function setLevel(number)
 //set state of level buttons
 function setLevelBtn()
 {
+  //get all level buttons
   var levelbtns = document.getElementsByClassName("levelbtn");
   
-  var maxlevel;
-
   //get corresponding max level
-  if(localStorage.getItem("game") == 1)
-  {
-    if(localStorage.getItem("grade") == 1)
-    {
-      maxlevel = localStorage.getItem("g1p1maxlevel");
-    }
-    else if(localStorage.getItem("grade") == 2)
-    {
-      maxlevel = localStorage.getItem("g1p2maxlevel");
-    }
-    else if(localStorage.getItem("grade") == 3)
-    {
-      maxlevel = localStorage.getItem("g1p3maxlevel");
-    }
-  }
-  else if(localStorage.getItem("game") == 3)
-  {
-    if(localStorage.getItem("grade") == 1)
-    {
-      maxlevel = localStorage.getItem("g3p1maxlevel");
-    }
-    else if(localStorage.getItem("grade") == 2)
-    {
-      maxlevel = localStorage.getItem("g3p2maxlevel");
-    }
-    else if(localStorage.getItem("grade") == 3)
-    {
-      maxlevel = localStorage.getItem("g3p3maxlevel");
-    }
-  }
+  var maxlevel = localStorage.getItem("g"+game+"p"+grade+"maxlevel");
 
   for (i = 0; i < maxlevel; i++)
   {
@@ -155,34 +117,12 @@ function setLevelBtn()
     })(i)
 
     //change button style to correct grade
-    if(localStorage.getItem("grade") == 1)
-    {
-      levelbtns[i].id = "p1";
-    }
-    else if(localStorage.getItem("grade") == 2)
-    {
-      levelbtns[i].id = "p2";
-    }
-    else if(localStorage.getItem("grade") == 3)
-    {
-      levelbtns[i].id = "p3";
-    }
+    levelbtns[i].id = "p"+grade;
 
     //change gamehost to correct game (game 1 and 3)
     if(localStorage.getItem("game") == 1)
     {
-      if(localStorage.getItem("grade") == 1) 
-      {
-        levelbtns[i].parentElement.href = "/g1gamehostingp1"
-      }
-      else if(localStorage.getItem("grade") == 2)
-      {
-        levelbtns[i].parentElement.href = "/g1gamehostingp2"
-      }
-      else if(localStorage.getItem("grade") == 3)
-      {
-        levelbtns[i].parentElement.href = "/g1gamehostingp3"
-      }
+      levelbtns[i].parentElement.href = "/g1gamehostingp"+grade;
     }
     else if(localStorage.getItem("game") == 3)
     {
@@ -194,20 +134,6 @@ function setLevelBtn()
 //change gamehost to correct game (game 2)
 function game2host()
 {
-  var g2host = document.querySelector('[href="#g2"]')
-  if(localStorage.getItem("grade") == 1)
-  {
-    g2host.setAttribute("href", "/g2gamehostingp1")
-  }
-  else if(localStorage.getItem("grade") == 2)
-  {
-    g2host.setAttribute("href", "/g2gamehostingp2")
-  }
-  else if(localStorage.getItem("grade") == 3)
-  {
-    g2host.setAttribute("href", "/g2gamehostingp3")
-  }
+  var g2host = document.querySelector('[href="#g2"]');
+  g2host.setAttribute("href", "/g2gamehostingp"+grade);
 }
-
-
-
