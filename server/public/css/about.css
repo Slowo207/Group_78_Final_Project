@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box
+}
+
+
+@font-face {
+    src: url(/fonts/Sassoon-Primary.otf);
+    font-family: sass;
+}
+
+/* overall html */
+body {
+    position: relative;
+    height: 1000px;
+    background-image: linear-gradient(#6EB5FF 0%, #007DFF 100%);
+    background-size: cover;
+    font-family: sass;
+}
+
+/*nav bar*/
+nav {
+    height: 60px;
+    font-size: 30px;
+    line-height: 60px;
+    background-color: #98D4FF;
+    z-index: 1;
+}
+
+nav ul {
+    display: flex;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+nav li {
+    width: 250px;
+    display: inline-block;
+}
+
+nav li:hover {
+    background-color: #7ec9ff;
+}
+
+nav a,
+a:active {
+    color: black;
+    text-decoration: none;
+}
+
+i {
+    margin-right: 10px;
+    margin-left: 50px;
+}
+
+/* about page body */
+#aboutMain {
+    margin-top: 30px;
+
+}
+
+.about1 {
+    font-size: 40px;
+}
+.aboutContent p{
+    padding: 10px;
+}
+
+.about2 {
+    font-size: 40px;
+    margin-top: 20px;
+}
+
+h2{
+    padding-top: 10px;
+}
+
+h3{
+    padding-left: 20px;
+    padding-top: 10px;
+}
+ul {
+    padding-left: 40px;
+}
+
+/*creating two equal column */
+.column {
+    float: left;
+    padding: 10px;
+}
+
+.left {
+    width: 50%;
+}
+
+.right {
+    width: 50%;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 7%;
+    background-color: #98D4FF;
+    color: black;
+    text-align: center;
+}

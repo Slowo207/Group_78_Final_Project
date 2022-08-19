@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box
+}
+
+
+@font-face {
+    src: url(/fonts/Sassoon-Primary.otf);
+    font-family: sass;
+}
+/* overall html */
+body {
+    position: relative;
+    min-height: 1000px;
+    background-image: linear-gradient(#6EB5FF 0%, #007DFF 100%);
+    background-size: cover;
+    font-family: sass;
+}
+
+/*nav bar*/
+nav {
+    height: 60px;
+    font-size: 30px;
+    line-height: 60px;
+    background-color: #98D4FF;
+    z-index: 1;
+}
+
+nav ul {
+    display: flex;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+nav li {
+    width: 250px;
+    display: inline-block;
+}
+
+nav li:hover {
+    background-color: #7ec9ff;
+}
+
+nav a,
+a:active {
+    color: black;
+    text-decoration: none;
+}
+
+
+i {
+    margin-right: 10px;
+    margin-left: 50px;
+}
+
+
+/* body*/
+#bodymain {
+
+    background-image: url('/assets/aquarium.gif');
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+
+
+}
+
+/* index page body   */
+
+.homeh1 {
+    text-align: center;
+    margin-left: 32%;
+    margin-top: 200px;
+    font-size: 80px;
+    width: fit-content;
+    background-color: #228aff;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+    font-family: sass;
+}
+
+.play_button {
+    background-color: #9BE7FF;
+    border: solid 2px #2e73a1;
+    color: black;
+    width: 200px;
+    height: 60px;
+    border-radius: 10vh;
+    padding: 16px 32px;
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 45%;
+}
+.play_button:hover {
+    background-color: #7ec9ff;
+}
+
+#footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 7%;
+    background-color: #98D4FF;
+    color: black;
+    text-align: center;
+}
