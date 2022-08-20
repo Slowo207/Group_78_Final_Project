@@ -76,7 +76,7 @@ function setup()
 
     textFont(sassoon);
 
-    questions_set = new QuestionAnswerGenerator(number_of_questions, range_of_numbers_by_level[level_selected]);
+    questions_set = new QuestionAnswerGenerator(number_of_questions, range_of_numbers_by_level[level_selected], int(level_selected) + 1);
     scoreboard = new Scoreboard(number_of_questions);
 
     answer_button_width = width/2;
@@ -212,6 +212,7 @@ function draw()
                 restart_button.size(360,78);
             }
             restart_button.show();
+
             if(toggle_timer)
             {
                 completionTime = timer;
@@ -292,7 +293,7 @@ function restart_game()
     player_rod_line_length = 200;
     ai_rod_line_length = 200;
 
-    questions_set = new QuestionAnswerGenerator(number_of_questions, range_of_numbers_by_level[level_selected]);
+    questions_set = new QuestionAnswerGenerator(number_of_questions, range_of_numbers_by_level[level_selected], int(level_selected) + 1);
     scoreboard = new Scoreboard(number_of_questions);
 
     game_stage = 0;
@@ -311,13 +312,13 @@ function advance_next_level()
     game_start = 0;
 
     level_selected++;
-    localStorage.setItem("g1p1maxlevel", level_selected);
+    localStorage.setItem("g1p1maxlevel", level_selected + 1);
     
     //fishing rod line length;
     player_rod_line_length = 200;
     ai_rod_line_length = 200;
 
-    questions_set = new QuestionAnswerGenerator(number_of_questions, range_of_numbers_by_level[level_selected]);
+    questions_set = new QuestionAnswerGenerator(number_of_questions, range_of_numbers_by_level[level_selected], int(level_selected) + 1);
     scoreboard = new Scoreboard(number_of_questions);
 
     game_stage = 0;

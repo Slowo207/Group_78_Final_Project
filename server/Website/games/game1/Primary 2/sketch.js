@@ -10,7 +10,7 @@ var ai_rod_line_speed = 0.075;
 var range_of_numbers_by_level = [200, 400, 600, 800, 1000];
 
 // level selected
-var level_selected = 4;
+var level_selected = localStorage.getItem("level");
 
 //multiplication range
 multiplication_range = [6, 8, 10, 11, 12];
@@ -79,7 +79,7 @@ function setup()
 
     textFont(sassoon);
 
-    questions_set = new QuestionAnswerGenerator(number_of_questions, range_of_numbers_by_level[level_selected], multiplication_range[level_selected]);
+    questions_set = new QuestionAnswerGenerator(number_of_questions, range_of_numbers_by_level[level_selected], multiplication_range[level_selected], int(level_selected) + 1);
     scoreboard = new Scoreboard(number_of_questions);
 
     answer_button_width = width/2;
@@ -137,13 +137,22 @@ function setup()
     option4.mouseClicked(function(){questions_set.checkAnswer(game_stage, option4.value(),scoreboard, option4, gameEnded, player_rod_reduction)});
 
     // Restart Game Button
-    restart_button = createButton("Restart");
+    restart_button = createButton("Retry Level");
     restart_button.parent("game1p2");
     restart_button.style("font-size", '45px');
     restart_button.style("font-family", "sass");
     restart_button.position(width/3 - 50, 2*height/3);
-    restart_button.size(360,76);
+    restart_button.size(180,120);
     restart_button.mouseClicked(restart_game);
+
+    // Next Level Button
+    next_button = createButton("Next Level");
+    next_button.style("font-family", "sass");
+    next_button.style("font-size", '45px');
+    next_button.parent("game1p2");
+    next_button.position(width/3 + 130, 2*height/3);
+    next_button.size(180,120);
+    next_button.mouseClicked(advance_next_level);
     
     player_rod_reduction = player_rod_line_length/number_of_questions;
 }
@@ -196,6 +205,16 @@ function draw()
             option4.hide();
             gameEnded = true;
             ai_rod_line_speed = 0;
+
+            if(level_selected < range_of_numbers_by_level.length -1)
+            {
+                next_button.show();
+            }
+            else
+            {
+                restart_button.size(360,78);
+            }
+
             restart_button.show();
             if(toggle_timer)
             {
@@ -221,7 +240,8 @@ function draw()
         option3.hide();
         option4.hide();
         restart_button.hide();
-
+        next_button.hide();
+        
         game_start_button.show();
 
         // default background
@@ -276,7 +296,32 @@ function restart_game()
     player_rod_line_length = 200;
     ai_rod_line_length = 200;
 
-    questions_set = new QuestionAnswerGenerator(number_of_questions, range_of_numbers_by_level[level_selected], multiplication_range[level_selected]);
+    questions_set = new QuestionAnswerGenerator(number_of_questions, range_of_numbers_by_level[level_selected], multiplication_range[level_selected], int(level_selected) + 1);
+    scoreboard = new Scoreboard(number_of_questions);
+
+    game_stage = 0;
+    
+    toggle_timer = !toggle_timer;
+
+    gameEnded = false;
+
+    ai_rod_line_speed = 0.05;
+
+    endCelebrationSound();
+}
+
+function advance_next_level()
+{
+    game_start = 0;
+
+    level_selected++;
+    localStorage.setItem("g1p2maxlevel", level_selected + 1);
+    
+    //fishing rod line length;
+    player_rod_line_length = 200;
+    ai_rod_line_length = 200;
+
+    questions_set = new QuestionAnswerGenerator(number_of_questions, range_of_numbers_by_level[level_selected], multiplication_range[level_selected], int(level_selected) + 1);
     scoreboard = new Scoreboard(number_of_questions);
 
     game_stage = 0;
