@@ -53,7 +53,7 @@ var bgm;
 
 function preload()
 {
-    soundFormats('mp3','wav');
+    soundFormats('mp3');
 
     bgm = loadSound("games/game1/sounds/Cuckoo Clock Quincas Moreira Background Music Children'sMusic.mp3");
     bgm.setVolume(0.2);
@@ -61,7 +61,7 @@ function preload()
     correct_answer_sound = loadSound("games/game1/sounds/correct_answer.mp3");
     correct_answer_sound.setVolume(0.8);
 
-    celebration_sound = loadSound("games/game1/sounds/Celebration.wav");
+    celebration_sound = loadSound("games/game1/sounds/Celebration.mp3");
     celebration_sound.setVolume(0.1);
     
     sassoon = loadFont("fonts/Sassoon-Primary.otf");
@@ -133,14 +133,23 @@ function setup()
     option4.style("font-family", "sass");
     option4.mouseClicked(function(){questions_set.checkAnswer(game_stage, option4.value(),scoreboard, option4, gameEnded, player_rod_reduction)});
 
-    // Restart Game Button
-    restart_button = createButton("Restart");
+    // Retry Game Button
+    restart_button = createButton("Retry Level");
     restart_button.style("font-family", "sass");
     restart_button.style("font-size", '45px');
     restart_button.parent("game1p1");
     restart_button.position(width/3 - 50, 2*height/3);
-    restart_button.size(360,76);
+    restart_button.size(180,120);
     restart_button.mouseClicked(restart_game);
+
+    // Next Level Button
+    next_button = createButton("Next Level");
+    next_button.style("font-family", "sass");
+    next_button.style("font-size", '45px');
+    next_button.parent("game1p1");
+    next_button.position(width/3 + 130, 2*height/3);
+    next_button.size(180,120);
+    next_button.mouseClicked(advance_next_level);
 
     player_rod_reduction = player_rod_line_length/number_of_questions;
 }
@@ -193,6 +202,15 @@ function draw()
             option4.hide();
             gameEnded = true;
             ai_rod_line_speed = 0;
+
+            if(level_selected < range_of_numbers_by_level.length -1)
+            {
+                next_button.show();
+            }
+            else
+            {
+                restart_button.size(360,78);
+            }
             restart_button.show();
             if(toggle_timer)
             {
@@ -218,6 +236,7 @@ function draw()
         option3.hide();
         option4.hide();
         restart_button.hide();
+        next_button.hide();
 
         game_start_button.show();
 
@@ -268,6 +287,31 @@ function updateQuestionAndOptions(game_stage)
 function restart_game()
 {
     game_start = 0;
+    
+    //fishing rod line length;
+    player_rod_line_length = 200;
+    ai_rod_line_length = 200;
+
+    questions_set = new QuestionAnswerGenerator(number_of_questions, range_of_numbers_by_level[level_selected]);
+    scoreboard = new Scoreboard(number_of_questions);
+
+    game_stage = 0;
+    
+    toggle_timer = !toggle_timer;
+
+    gameEnded = false;
+
+    ai_rod_line_speed = 0.05;
+
+    endCelebrationSound();
+}
+
+function advance_next_level()
+{
+    game_start = 0;
+
+    level_selected++;
+    localStorage.setItem("g1p1maxlevel", level_selected);
     
     //fishing rod line length;
     player_rod_line_length = 200;

@@ -64,7 +64,7 @@ function preload()
     correct_answer_sound = loadSound("games/game1/sounds/correct_answer.mp3");
     correct_answer_sound.setVolume(0.8);
 
-    celebration_sound = loadSound("games/game1/sounds/Celebration.wav");
+    celebration_sound = loadSound("games/game1/sounds/Celebration.mp3");
     celebration_sound.setVolume(0.1);
 
     sassoon = loadFont("fonts/Sassoon-Primary.otf");
