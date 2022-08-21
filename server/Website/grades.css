@@ -64,19 +64,19 @@ i {
 .gradesh1 {
     text-align: center;
     margin-top: 3vh;
-    font-size: 9vh;
+    font-size: 60px;
     color: black;
 }
+
 /*grid container for levels choices*/
 .grid-container {
     width: 15%;
     position: relative;
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(1, 1);
     margin-top: 5vh;
-    row-gap: 5vh;
-    column-gap: 20vh;
-    left: 40vh;
+    row-gap: 40px;
+    left: 16%;
 }
 
 .grid-item button {
@@ -85,7 +85,8 @@ i {
     font-size: 5vh;
     text-decoration: none;
     border-radius: 5vh;
-    padding: 3vh 60vh;
+    width: 68vw;
+    height: 130px;
     place-items: center;
 }
 
@@ -94,11 +95,13 @@ i {
     background-color: #FFE86E;
 
 }
+
 .grid-item #p2:hover {
 
     background-color: #46fe99;
 
 }
+
 .grid-item #p3:hover {
 
     background-color: #ff7878;
@@ -117,3 +120,5 @@ i {
     color: black;
     text-align: center;
 }
+
+

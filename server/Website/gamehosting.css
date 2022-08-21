@@ -61,7 +61,7 @@ i {
 
 .gameh1 {
     font-size: 60px;
-    text-align: center;
+    text-indent: 130px;
     margin-top: 2%;
     margin-bottom: 1%;
 }
@@ -74,46 +74,28 @@ i {
 }
 
 
-/* gamehosting body */
-#gamehosting-btn button {
-    background-color: #04AA6D;
-    /* Green background */
-    border: 1px solid green;
-    border-radius: 5vh;
-    /* Green border */
+#exit-button-div{
+    text-align: left;
+    float:left;
+    margin-left:100px;
+    margin-top:20px;
+}
+
+.exit-button {
+    background-color: rgb(77, 255, 77);
+    border: solid 2px black;
     color: black;
-    /* White text */
-    text-align: center;
-    margin-left: 15%;
-    margin-top: 5%;
-    width: 15%;
-    padding: 10px 24px;
-    /* Some padding */
+    width: 200px;
+    height: 60px;
+    border-radius: 10vh;
+    padding: 16px 32px;
+    font-size: 26px;
     cursor: pointer;
-    /* Pointer/hand icon */
-    float: left;
-    margin-bottom:30px;
-    /* Float the buttons side by side */
+    text-align: center;
 }
-
-#gamehosting-btn button:not(:last-child) {
-    border-right: none;
-    /* Prevent double borders */
+.exit-button:hover {
+    background-color: rgb(61, 226, 61);
 }
-
-/* Clear floats (clearfix hack) */
-#gamehosting-btn:after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-/* Add a background color on hover */
-#gamehosting-btn button:hover {
-    background-color: #3e8e41;
-}
-
-
 
 #footer {
     position: relative;
