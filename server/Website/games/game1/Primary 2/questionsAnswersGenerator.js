@@ -108,7 +108,6 @@ class QuestionAnswerGenerator
         strokeWeight(1);
         textSize(40);
         textAlign(CENTER,CENTER);
-        text("Level: " + this.current_level , text_width/2, text_height/5);
         // Questions
         text(this.questions[question_number], text_width/2, text_height/2 + 20);
         pop();
@@ -157,7 +156,7 @@ class QuestionAnswerGenerator
         fill(0);
         textAlign(CENTER,CENTER);
         textSize(30);
-        text("Total attempts needed \n to complete the game: ", width/2, height/5 + 50);
+        text("Total attempts needed \n to complete Level " + this.current_level + ":", width/2, height/5 + 50);
         text("Time Taken: ", width/2, 2.5*height/5);
 
         // Score

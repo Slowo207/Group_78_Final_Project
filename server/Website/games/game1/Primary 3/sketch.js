@@ -4,7 +4,7 @@
 var number_of_questions = 10;
 
 //fishing rod speed change 
-var ai_rod_line_speed = 0.075;
+var ai_rod_line_speed = 0.02;
 
 // levels array
 var range_of_numbers_by_level = [2000, 4000, 6000, 8000, 10000];
@@ -305,9 +305,11 @@ function restart_game()
 
     gameEnded = false;
 
-    ai_rod_line_speed = 0.075;
+    ai_rod_line_speed = 0.02;
 
     endCelebrationSound();
+    
+    toggle_bgm = !toggle_bgm;
 }
 
 function advance_next_level()
@@ -330,9 +332,11 @@ function advance_next_level()
 
     gameEnded = false;
 
-    ai_rod_line_speed = 0.05;
+    ai_rod_line_speed = 0.02;
 
     endCelebrationSound();
+
+    toggle_bgm = !toggle_bgm;
 }
 
 function gameTimer()
@@ -370,7 +374,6 @@ function startBGM()
 function endBGM()
 {
     bgm.stop();
-    toggle_bgm = !toggle_bgm;
 }
 
 function startCelebrationSound()
@@ -384,5 +387,6 @@ function startCelebrationSound()
 function endCelebrationSound()
 {
     celebration_sound.stop();
+    
     toggle_celebration_sound = !toggle_celebration_sound;
 }

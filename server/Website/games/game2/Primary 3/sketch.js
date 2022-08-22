@@ -13,6 +13,7 @@ var option1, option2, option3, option4;
 // a boolean to toggle options
 var toggle_options = true;
 var toggle_bgm = true;
+var toggle_celebration_sound = true;
 
 // buttons dimension
 var answer_button_width;
@@ -33,6 +34,9 @@ function preload()
 
     correct_answer_sound = loadSound("games/game2/sounds/correct_answer.mp3");
     correct_answer_sound.setVolume(0.8);
+
+    celebration_sound = loadSound("games/game1/sounds/Celebration.mp3");
+    celebration_sound.setVolume(0.1);
 
     sassoon = loadFont("fonts/Sassoon-Primary.otf");
 }
@@ -142,6 +146,10 @@ function draw()
             restart_button.show();
             questions_set.displayEndGameMarks();
             endBGM();
+            if(toggle_celebration_sound)
+            {
+                startCelebrationSound();
+            }
         }
     }
     else 
@@ -215,6 +223,8 @@ function restart_game()
     questions_set = new Game2QuestionAnswerGenerator();
 
     game_stage = 0;
+
+    toggle_bgm = !toggle_bgm;
 }
 
 function startBGM()
@@ -228,5 +238,18 @@ function startBGM()
 function endBGM()
 {
     bgm.stop();
-    toggle_bgm = !toggle_bgm;
+}
+
+function startCelebrationSound()
+{
+    celebration_sound.play();
+    celebration_sound.loop();
+
+    toggle_celebration_sound = !toggle_celebration_sound;
+}
+
+function endCelebrationSound()
+{
+    celebration_sound.stop();
+    toggle_celebration_sound = !toggle_celebration_sound;
 }

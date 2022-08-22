@@ -99,7 +99,7 @@ class Game2QuestionAnswerGenerator
             let tempElement = this.fish_array[randomIndex];
 
             let type = random(this.question_type);
-            this.questions.push("What is the " + type + " of this?" + '\n Length = ' + tempElement.length + ', Width/Breadth = ' + tempElement.width);
+            this.questions.push("What is the " + type + " of this?" + '\n Length = ' + tempElement.length + ', Width = ' + tempElement.width);
             
             this.fish_array.splice(randomIndex,1);
             this.questions_shape.push(tempElement);

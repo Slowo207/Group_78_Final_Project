@@ -144,7 +144,6 @@ class Game2QuestionAnswerGenerator
 
             this.options.push(option_set);
         }
-        console.log(this.options);
     }
 
      // private helper functions
