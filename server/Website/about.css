@@ -53,15 +53,13 @@ a:active {
 }
 
 i {
-    margin-right: 10px;
-    margin-left: 50px;
+    margin-right: 1vh;
 }
 
 /* about page body */
 #aboutMain {
-    margin-top: 2%;
-    margin-left: 1%;
-
+    margin-top: 2vh;
+    margin-left: 1vw;
 }
 
 .about1 {
@@ -70,25 +68,25 @@ i {
 
 .about2 {
     font-size: 40px;
-    margin-top: 20px;
+    margin-top: 2vh;
 }
 
 h2{
-    padding-top: 10px;
+    padding-top: 2vh;
 }
 
 h3{
-    padding-left: 20px;
-    padding-top: 10px;
+    padding-left: 2vw;
+    padding-top: 2vh;
 }
 
 /*creating two equal column */
 .column {
     float: left;
-    padding: 10px;
+
 }
 .column ul{
-    padding-left: 5%;
+    padding-left: 2vw;
 }
 
 .left {
