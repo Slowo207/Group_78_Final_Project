@@ -52,9 +52,9 @@ a:active {
     text-decoration: none;
 }
 
-i {
+nav i {
     margin-right: 10px;
-    margin-left: 2vw;
+    margin-left: 50px;
 }
 
 /* about page body */
@@ -62,6 +62,10 @@ i {
     margin-top: 2%;
     margin-left: 1%;
 
+}
+
+#aboutMain i {
+    padding: 1vh;
 }
 
 .about1 {
