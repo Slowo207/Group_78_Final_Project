@@ -19,7 +19,7 @@ body {
     padding-bottom:7%;
     height: fit-content;
     min-height: 100vh;
-    background-image: linear-gradient(#6EB5FF 0%, #007DFF 100%);
+    background-image: url('pictures/background-image.jpg');
     background-size: cover;
     font-family: sass;
 }
