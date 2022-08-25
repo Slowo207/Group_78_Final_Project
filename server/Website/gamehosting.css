@@ -62,7 +62,7 @@ nav i {
 
 .gameh1 {
     font-size: 60px;
-    text-indent: 15vw;
+    text-indent:15vw;
     margin-top: 2%;
     margin-bottom: 1%;
 }
@@ -86,7 +86,7 @@ nav i {
     background-color: rgb(244, 132, 132);
     border: solid 2px black;
     color: black;
-    width: 200px;
+    width: 11vw;
     height: 60px;
     border-radius: 10vh;
     padding: 16px 32px;
