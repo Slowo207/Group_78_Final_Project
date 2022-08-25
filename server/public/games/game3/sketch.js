@@ -5,11 +5,17 @@ var fishInLevel = 5
 var registerArray = []
 var changeArray = []
 
+var level = Number(localStorage.getItem('level'));
+var primary = Number(localStorage.getItem('grade')) - 1;
+
 function preload() {
   soundFormats('mp3');
 
   bgm = loadSound("games/game3/assets/sounds/game3_Music.mp3");
   bgm.setVolume(0.2);
+
+  correctSound = loadSound("/games/game3/assets/sounds/correctSound.mp3")
+  correctSound.setVolume(0.2)
 
   sassoon = loadFont("fonts/Sassoon-Primary.otf");
 }
@@ -29,27 +35,27 @@ function setup() {
   clientAssetArray = ["Boy.png", "Girl.png", "Grandma.png"]
   fishAssetArray = ["Fish_blue.png", "Fish_green.png", "Fish_orange.png", "Fish_purple.png", "Fish_yellow.png"]
   levelArray = [
-    //[MinPrice, MaxPrice, Increments, removeDecimal, HideCost, HideBills, HideCoins]
+    //[MinPrice, MaxPrice, Increments, removeDecimal, HideCost, ShowBills, ShowCoins]
     [
-      [0.1, 1, 0.1, false, false, true, false],
-      [0.1, 1, 0.05, false, false, true, false],
-      [1, 100, 10, true, false, false, true],
-      [1, 100, 5, true, false, false, true],
-      [1, 100, 1, true, false, false, true]
+      [0.1, 1, 0.1, false, false, false, true],
+      [0.1, 1, 0.05, false, false, false, true],
+      [1, 100, 10, true, false, true, false],
+      [1, 100, 5, true, false, true, false],
+      [1, 100, 1, true, false, true, false]
     ],
     [
-      [0.1, 1, 0.1, false, false, true, false],
-      [0.1, 1, 0.05, false, false, true, false],
-      [1, 100, 10, true, false, false, true], 
-      [1, 100, 5, true, false, false, true],
-      [1, 100, 1, true, false, false, true]
+      [0.1, 1, 0.1, false, false, false, true],
+      [0.1, 1, 0.05, false, false, false, true],
+      [1, 100, 10, true, false, true, false],
+      [1, 100, 5, true, false, true, false],
+      [1, 100, 1, true, false, true, false]
     ],
     [
-      [0.1, 100, 0.1, false, false, false, false],
-      [0.1, 100, 0.05, false, false, false, false],
-      [1, 100, 10, false, false, false, false],
-      [1, 100, 5, false, false, false, false],
-      [1, 100, 0.05, false, false, false, false]
+      [0.1, 100, 0.1, false, false, true, true],
+      [0.1, 100, 0.05, false, false, true, true],
+      [1, 100, 10, false, false, true, true],
+      [1, 100, 5, false, false, true, true],
+      [1, 100, 0.05, false, false, true, true]
     ]
   ]
   PrimaryTextArray = [["I will need ", "in change"], ["How much change should I get back?"], ["How much change should I get back?"]]
@@ -65,29 +71,35 @@ function setup() {
 
   //loading register box
   //(id, x, y, width, height, cost, asset, assetHeight, offset, scale, textOffsetX, textOffsetY)
-  registerArray.push(new Register(0, 104+75*0, 404, 71, 195, 20, "Note50.png", 195, 0, 0, 20, 105))
-  registerArray.push(new Register(1, 103+75*1, 404, 71, 195, 10, "Note20.png", 195, 0, 0, 20, 105))
-  registerArray.push(new Register(2, 102+75*2, 404, 71, 195, 5, "Note10.png", 195, 0, 0, 20, 105))
-  registerArray.push(new Register(3, 100+75*3, 404, 71, 195, 1, "Note5.png", 195, 0, 0, 20, 105)), 
-  
-  registerArray.push(new Register(4, 104+75*0, 600, 75, 100, 0.50, "GoldCoin.png", 75, 10, 10, 20, 52))
-  registerArray.push(new Register(5, 100+75*1, 600, 75, 100, 0.2, "SilverCoin.png", 75, 10, 10, 20, 52))
-  registerArray.push(new Register(6, 100+75*2, 600, 75, 100, 0.10, "BrassCoin.png", 75, 10, 10, 20, 52))
-  registerArray.push(new Register(7, 100+75*3, 600, 75, 100, 0.05, "BrassCoin.png", 75, 10, 10, 20, 52))
+  if(levelArray[primary][level][5]){
+    registerArray.push(new Register(registerArray.length, 104+75*0, 404, 71, 195, 20, "Note50.png", 195, 0, 0, 20, 105))
+    registerArray.push(new Register(registerArray.length, 103+75*1, 404, 71, 195, 10, "Note20.png", 195, 0, 0, 20, 105))
+    registerArray.push(new Register(registerArray.length, 102+75*2, 404, 71, 195, 5, "Note10.png", 195, 0, 0, 20, 105))
+    registerArray.push(new Register(registerArray.length, 100+75*3, 404, 71, 195, 1, "Note5.png", 195, 0, 0, 20, 105))
+  }
 
+  if(levelArray[primary][level][6]){
+    registerArray.push(new Register(registerArray.length, 104+75*0, 600, 75, 100, 0.50, "GoldCoin.png", 75, 10, 10, 20, 52))
+    registerArray.push(new Register(registerArray.length, 100+75*1, 600, 75, 100, 0.2, "SilverCoin.png", 75, 10, 10, 20, 52))
+    registerArray.push(new Register(registerArray.length, 100+75*2, 600, 75, 100, 0.10, "BrassCoin.png", 75, 10, 10, 20, 52))
+    registerArray.push(new Register(registerArray.length, 100+75*3, 600, 75, 100, 0.05, "BrassCoin.png", 75, 10, 10, 20, 52))
+  }
   //console.log("loaded register")
   
   //loading Change box
   //(x, y, width, height, cost, amount, asset, type)
-  changeArray.push(new Change(120 +65*0, 180, 65, 90, 20, 0, "Note50.png", 30, 45, "Note"))
-  changeArray.push(new Change(120 +65*1, 180, 65, 90, 10, 0, "Note20.png", 30, 45, "Note"))
-  changeArray.push(new Change(120 +65*2, 180, 65, 90, 5, 0, "Note10.png", 30, 45, "Note"))
-  changeArray.push(new Change(120 +65*3, 180, 65, 90, 1, 0, "Note5.png", 30, 45, "Note"))
-
-  changeArray.push(new Change(120 +65*0, 270, 65, 60, 0.50, 0, "GoldCoin.png", 20, 20, "Coin"))
-  changeArray.push(new Change(120 +65*1, 270, 65, 60, 0.20, 0, "SilverCoin.png", 20, 20, "Coin"))
-  changeArray.push(new Change(120 +65*2, 270, 65, 60, 0.10, 0, "BrassCoin.png", 20, 20, "Coin"))
-  changeArray.push(new Change(120 +65*3, 270, 65, 60, 0.05, 0, "CentExtra.png", 20, 20, "Coin"))
+  if(levelArray[primary][level][5]){
+    changeArray.push(new Change(120 +65*0, 180, 65, 90, 20, 0, "Note50.png", 30, 45, "Note"))
+    changeArray.push(new Change(120 +65*1, 180, 65, 90, 10, 0, "Note20.png", 30, 45, "Note"))
+    changeArray.push(new Change(120 +65*2, 180, 65, 90, 5, 0, "Note10.png", 30, 45, "Note"))
+    changeArray.push(new Change(120 +65*3, 180, 65, 90, 1, 0, "Note5.png", 30, 45, "Note"))
+  }
+  if(levelArray[primary][level][6]){
+    changeArray.push(new Change(120 +65*0, 270, 65, 60, 0.50, 0, "GoldCoin.png", 20, 20, "Coin"))
+    changeArray.push(new Change(120 +65*1, 270, 65, 60, 0.20, 0, "SilverCoin.png", 20, 20, "Coin"))
+    changeArray.push(new Change(120 +65*2, 270, 65, 60, 0.10, 0, "BrassCoin.png", 20, 20, "Coin"))
+    changeArray.push(new Change(120 +65*3, 270, 65, 60, 0.05, 0, "CentExtra.png", 20, 20, "Coin"))
+  }
 
   //console.log("loaded change")
   
@@ -101,6 +113,10 @@ function setup() {
   textAlign(CENTER)
   correctImg = loadImage('games/game3/assets/HappyFace.png')
   wrongImg = loadImage('games/game3/assets/SadFace2.png')
+
+  speachBubbleImg = loadImage('games/game3/assets/SpeechBubble.png')
+
+  startButtonImg = loadImage('games/game3/assets/start-button.png')
 }
 
 function resetGame(){
@@ -111,8 +127,7 @@ function resetGame(){
   change = 0 
   gameState = 0
   score = 0
-  var level = Number(localStorage.getItem('level'));
-  var primary = Number(localStorage.getItem('grade')) - 1;
+  
 
   console.log("Primary: " + (primary + 1) + ", level: " + (level + 1))
 
@@ -131,6 +146,8 @@ function draw() {
   }else if (gameState == 1){
     gamePage()
   }else if (gameState == 2){
+    fish = fishArray.length -1
+    gamePage()
     endPage()
   }
 }
@@ -152,9 +169,10 @@ function startPage(){
   image(backgoundImage, 0, 0, 800, 800)
   textSize(32)
   fill("black")
-  text("Start", 400, 350)
-  noFill()
-  rect(300, 300, 200, 100)
+  //text("Start", 400, 350)
+  image(startButtonImg, 250, 215, 300, 275)
+  // noFill()
+  // rect(300, 300, 200, 100)
 }
 
 function gamePage(){
@@ -179,11 +197,13 @@ function gamePage(){
   //give change box
   rect(150, 350, 200, 30)
 
+  rect(120, 120, 260, 60)
+
   textSize(26)
   fill("black")
   
   //Change Text
-  text("Total Change:", 200, 160)
+  text("Total:", 175, 160)
   if(costHide){
     push()
     fill("blue")
@@ -192,17 +212,12 @@ function gamePage(){
   }else{
     push()
     textAlign(LEFT)
-    text(change, 290, 162)
+    text(change, 225, 162)
     pop()
   }
-  //text("Fish", 400, 450)
-  //text("Paid", 100, 100)
-
-  textSize(32)
   
-  //Score Text
-  //text(score, 50, 50)
-
+  textSize(32)
+ 
   //Score filler
   for(i=0; i< fishInLevel; i++){
     fill('rgba(0, 0, 0, .5)')
@@ -210,7 +225,7 @@ function gamePage(){
   }
 
   //Score Images
-  for(i=0; i < fish; i++){
+  for(i=0; i < scoreArray.length; i++){
     if(scoreArray[i] == 1){
       image(correctImg, 105 + 60*i, 25, 50, 50)
     }else {
@@ -234,6 +249,23 @@ function gamePage(){
   //Draws fish
   fishArray[fish].draw()
 
+  image(speachBubbleImg, 640, 75, 150, 125)
+
+  push()
+  textSize(22)
+  if(primary < 2){
+    text("I will", 715, 110)
+    text("need $" + Math.round((fishArray[fish].change) * 100) / 100, 715, 135)
+    text("in change.", 715, 160)
+  }else{
+    textSize(22)
+    text("How much", 715, 110)
+    text("change do", 715, 135)
+    text("I get?", 715, 160)
+  }
+
+  pop()
+
   //Customer paid Note
   fill('#C8AE7E ')
   rect(400,350, 300, 50)
@@ -247,7 +279,7 @@ function gamePage(){
 }
 
 function endPage(){
-  image(backgoundImage, 0, 0, 800, 800)
+  //image(backgoundImage, 0, 0, 800, 800)
   textSize(32)
   fill("black")
   text("End", 400, 350)
@@ -270,12 +302,15 @@ function mouseClicked(){
         registerClick = registerArray[i].clicked()
         if(registerClick != false){
           change += registerClick[1]
+          change = Math.round((change) * 100) / 100
           changeArray[registerClick[0]].amount += 1
         }
       }
     //Give Change logic
     }else if((mouseX < 350 && mouseX > 150)&&(mouseY < 380 && mouseY > 350)){
+      fishArray[fish].change = Math.round((fishArray[fish].change) * 100) / 100
       if(change == fishArray[fish].change){
+        correctSound.play()
         score += 1
         scoreArray.push(1)
       }else{
@@ -295,8 +330,9 @@ function mouseClicked(){
     //120, 120, 260, 210
     }else if((mouseX > 120 && mouseX < 380) && (mouseY > 150 && mouseY < 330)){
       for(i=0; i < changeArray.length; i++){
-        changeClicked = changeArray[i].clicked()
-        change -= changeClicked
+        change -= changeArray[i].clicked()
+        console.log(change)
+        change = Math.round((change) * 100) / 100
       }
     }
   }else if (gameState == 2){

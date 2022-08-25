@@ -1,7 +1,13 @@
+const dBSp = require("../db/database")
+
+
 module.exports = function(app) {
 
     let primary = 0
     let level = 0
+
+    let grade = 0
+    let game = 0
 
     app.get("/",function(req, res){
         res.render("index.html", {
@@ -14,7 +20,6 @@ module.exports = function(app) {
         });
     });
     app.get("/gameslideshow",function(req, res){
-        primary = 1
         res.render("gameslideshow.html", {
             title: "Dynamic title"
         });
@@ -66,6 +71,8 @@ module.exports = function(app) {
 
     app.get("/g3gamehosting",function(req, res){
         primary = 1
+        game = 3 
+        grade = 1
         res.render("g3gamehosting.html", {
             title: "Dynamic title"
         });
@@ -76,4 +83,8 @@ module.exports = function(app) {
             title: "Dynamic title"
         });
     });
+
+//     app.post("/addEntry", function(req, res){
+//         db = dBSp.opendb("g" + req.body.game + "p" + req.body.grade)
+//     })
 }

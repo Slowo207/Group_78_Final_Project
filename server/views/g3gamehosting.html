@@ -10,29 +10,58 @@
     <title>MATHQUARIUM</title>
 </head>
 
-<body>
+<body onload="setIDs()">
     <div w3-include-html="/templates/navbar.html"></div>
 
-    <h1 class="gameh1">Game name</h1>
-    <div class="content" id="game3p1"></div>
-    <div id="gamehosting-btn">
-        <form>
-            <a href="gamehosting.html" style="text-decoration: none;">
-                <button type=button class=btn>Replay</button>
-            </a>
-            <a href="">
-                <button type=button class=btn>Next</button>
-            </a>
-            <a href="/grades">
-                <button type=button class=btn>Exit</button>
-            </a>
-        </form>
-
+    <div id="exit-button-div">
+        <a href="grades.html">
+            <button type="button" class="exit-button" type="button"><i class="bi bi-door-closed"></i></button>
+        </a>
     </div>
+    <h1 class="gameh1">Fish Market</h1>
+    <div class="game-container">
+        <div class="content" id="game3p1"></div>
+        <!-- <div class="scoreboard">
+            <div id="table">
+                <div id="columnNames">
+
+                </div>
+                <div id="rows"></div>
+            </div>
+            <form method="post" action="/addEntry">
+                <input id="game" type="hidden" value="0" name= "game">
+                <input id="grade" type="hidden" value="0" name="grade">
+                <div id="addEntry">
+                    <input id="name" type="text" name="name">
+                </div>
+                <div id="submitButton-container">
+                    <input type="submit" value="Create">
+                </div>
+            </form>
+            <div id="levelButtons">
+                <div id="previousLevel">
+                    <a>
+                        <button type="button">opendb</button>
+                    </a>
+                </div>
+                <div id="restartLevel">
+                    <a>
+                        <button type="button">RestartLevel</button>
+                    </a>
+                </div>
+                <div id="nextLevel">
+                    <a>
+                        <button type="button">NextLevel</button>
+                    </a>
+                </div>
+            </div> -->
+        </div>
+    </div> 
 
     <div w3-include-html="/templates/footer.html"></div>
 
     <script src="/js/includehtml.js"></script>
+    <script src="/js/database.js"></script>
     <script>
         includeHTML();
     </script>
@@ -47,6 +76,12 @@
     <script src="/games/game3/fish.js"></script>
     <script src="/games/game3/change.js"></script>
     <script src="/games/game3/register.js"></script>
+    <script>
+        function setIDs(){
+            document.getElementById('game').value = localStorage.getItem('game')
+            document.getElementById('grade').value = localStorage.getItem('grade')
+        }
+    </script>
 </body>
 
 

@@ -22,6 +22,8 @@ class Fish{
     //draws price
     image(priceTag, 510, 410, 70, 50)
 
+    rect(511, 410, 68, 34)
+
     textSize(20)
     fill("black")
     text(this.cost, this.x+50, this.y- 115)

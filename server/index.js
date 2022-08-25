@@ -1,7 +1,13 @@
 const express = require ("express");
 const path = require("path")
+var sqlite3 = require("sqlite3").verbose()
+const bodyParser = require("body-parser")
+
 const app = express();
 const port = 8080;
+
+app.use(bodyParser.urlencoded({extended: true}))
+
 
 require("./routes/main")(app);
 

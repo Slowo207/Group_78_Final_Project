@@ -13,7 +13,6 @@
     font-family: sass;
 }
 
-
 /* overall html */
 body {
     position: relative;
@@ -80,8 +79,8 @@ a.disabled {
     grid-template-columns: repeat(3, 1fr);
     margin-top: 5vh;
     row-gap: 5vh;
-    column-gap: 20vh;
-    left: 40vh;
+    column-gap: 10vw;
+    left: 16vw;
 }
 
 .grid-item #locked {
@@ -90,7 +89,7 @@ a.disabled {
     font-size: 30px;
     text-decoration: none;
     border-radius: 25px;
-    padding: 10vh;
+    padding: 5vw;
     place-items: center;
 }
 
@@ -100,7 +99,7 @@ a.disabled {
     font-size: 30px;
     text-decoration: none;
     border-radius: 25px;
-    padding: 10vh;
+    padding: 5vw;
     place-items: center;
 }
 
@@ -116,7 +115,7 @@ a.disabled {
     font-size: 30px;
     text-decoration: none;
     border-radius: 25px;
-    padding: 10vh;
+    padding: 5vw;
     place-items: center;
 }
 
@@ -132,7 +131,7 @@ a.disabled {
     font-size: 30px;
     text-decoration: none;
     border-radius: 25px;
-    padding: 10vh;
+    padding: 5vw;
     place-items: center;
 }
 
