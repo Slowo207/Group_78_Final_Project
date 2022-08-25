@@ -55,9 +55,8 @@ a:active {
 }
 
 
-i {
-    margin-right: 10px;
-    margin-left: 50px;
+nav i {
+    margin-left: 64px;
 }
 
 /* grades portion */
