@@ -11,19 +11,7 @@
 </head>
 
 <body>
-    <nav>
-        <ul>
-            <a href="index.html">
-                <li><i class="fa fa bi-house-fill"></i>Home</li>
-            </a>
-            <a href="grades.html">
-                <li><i class="fa fa bi-house-fill"></i>Games</li>
-            </a>
-            <a href="about.html">
-                <li><i class="fa fa bi-house-fill"></i>About</li>
-            </a>
-        </ul>
-    </nav>
+    <div w3-include-html="navbar.html"></div>
     <div id="exit-button-div">
         <a href="grades.html">
             <button type="button" class="exit-button" type="button">Exit</i></button>
@@ -31,19 +19,13 @@
     </div>
     <h1 class="gameh1">Fish Shapes</h1>
     <div class="content" id="game2p3"></div>
-    
-    <footer id="footer">
-        <div class="our info">
-            <h1>Contact Us</h1>
-            <div class="social-info">
 
-                <a href=""><span class="fa bi-facebook"></a>
-                <a href=""><span class="fa fa bi-instagram"></a>
-                <a href=""><span class="fa fa bi-telephone-fill"></a>
+    <div w3-include-html="footer.html"></div>
 
-            </div>
-        </div>
-    </footer>
+    <script src="includehtml.js"></script>
+    <script>
+        includeHTML();
+    </script>
 
     <script src="/games/game1/Primary 1/lib/p5.min.js"></script>
     <script src="/games/game1/Primary 1/lib/p5.dom.js"></script>
