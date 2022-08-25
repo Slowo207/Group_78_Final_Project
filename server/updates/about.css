@@ -16,9 +16,7 @@
 /* overall html */
 body {
     position: relative;
-    padding-bottom:7%;
-    height: fit-content;
-    min-height: 100vh;
+    height: 1000px;
     background-image: linear-gradient(#6EB5FF 0%, #007DFF 100%);
     background-size: cover;
     font-family: sass;
@@ -54,20 +52,16 @@ a:active {
     text-decoration: none;
 }
 
-nav i {
+
+i {
     margin-right: 10px;
     margin-left: 50px;
 }
 
 /* about page body */
 #aboutMain {
-    margin-top: 2%;
-    margin-left: 1%;
+    margin-top: 30px;
 
-}
-
-#aboutMain i {
-    padding: 1vh;
 }
 
 .about1 {
@@ -76,40 +70,9 @@ nav i {
 
 .about2 {
     font-size: 40px;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
-h2{
-    padding-top: 10px;
-}
-
-h3{
-    padding-left: 20px;
-    padding-top: 10px;
-}
-
-/*creating two equal column */
-.column {
-    float: left;
-    padding: 10px;
-}
-.column ul{
-    padding-left: 5%;
-}
-
-.left {
-    width: 50%;
-}
-
-.right {
-    width: 50%;
-}
-
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
 
 #footer {
     position: absolute;
