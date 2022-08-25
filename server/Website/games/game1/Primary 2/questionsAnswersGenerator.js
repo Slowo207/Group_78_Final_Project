@@ -109,7 +109,7 @@ class QuestionAnswerGenerator
         textSize(40);
         textAlign(CENTER,CENTER);
         // Questions
-        text(this.questions[question_number], text_width/2, text_height/2 + 20);
+        text(this.questions[question_number], text_width/2, text_height/2);
         pop();
      }
 

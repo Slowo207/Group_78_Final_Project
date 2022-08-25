@@ -16,7 +16,9 @@
 /* overall html */
 body {
     position: relative;
-    height: 1000px;
+    padding-bottom:7%;
+    height: fit-content;
+    min-height: 100vh;
     background-image: linear-gradient(#6EB5FF 0%, #007DFF 100%);
     background-size: cover;
     font-family: sass;
@@ -52,7 +54,7 @@ a:active {
     text-decoration: none;
 }
 
-i {
+nav i {
     margin-right: 10px;
     margin-left: 50px;
 }
@@ -62,6 +64,10 @@ i {
     margin-top: 2%;
     margin-left: 1%;
 
+}
+
+#aboutMain i {
+    padding: 1vh;
 }
 
 .about1 {
