@@ -1,7 +1,7 @@
 class QuestionAnswerGenerator
 {
 
-    constructor(amount_of_questions, range_of_numbers, multiplication_range)
+    constructor(amount_of_questions, range_of_numbers, multiplication_range, selected_level)
     {
         // an array to contain the questions
         this.questions = [];
@@ -9,6 +9,7 @@ class QuestionAnswerGenerator
         this.answers = [];
         this.attempts = 0;
         this.isWrong = false;
+        this.current_level = selected_level;
         this.#generateQuestions(amount_of_questions, range_of_numbers, multiplication_range);
         this.#generateAnswers(amount_of_questions, range_of_numbers);
     }
@@ -109,13 +110,13 @@ class QuestionAnswerGenerator
         strokeWeight(5);
         fill(0);
         rect(0, 0, text_width, text_height);
-        // Questions
+        // Level Display
         fill(255);
         stroke(255);
         strokeWeight(1);
         textSize(40);
         textAlign(CENTER,CENTER);
-        // textFont();
+        // Questions
         text(this.questions[question_number], text_width/2, text_height/2);
         pop();
      }
@@ -163,7 +164,7 @@ class QuestionAnswerGenerator
         fill(0);
         textAlign(CENTER,CENTER);
         textSize(30);
-        text("Total attempts needed \n to complete the game: ", width/2, height/5 + 50);
+        text("Total attempts needed \n to complete Level " + this.current_level + ":", width/2, height/5 + 50);
         text("Time Taken: ", width/2, 2.5*height/5);
 
         // Score

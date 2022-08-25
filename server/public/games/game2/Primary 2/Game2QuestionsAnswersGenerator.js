@@ -3,11 +3,11 @@ class Game2QuestionAnswerGenerator
 
     constructor()
     {
-        this.cone_fish_1 = new fishes("games/game2/Primary 2/assets/3D/Cone/Cone_Squid.png", 'Cone');
-        this.cube_fish_1 = new fishes("games/game2/Primary 2/assets/3D/Cube/Cube_Fish.png", 'Cube');
-        this.cuboid_fish_1 = new fishes("games/game2/Primary 2/assets/3D/Cuboid/Cuboid_Fish.png", 'Cuboid');
-        this.cylinder_fish_1 = new fishes("games/game2/Primary 2/assets/3D/Cylinder/Cylinder_Dolphin.png", 'Cylinder');
-        this.sphere_fish_1 = new fishes("games/game2/Primary 2/assets/3D/Sphere/Sphere_Blowfish.png", 'Sphere');
+        this.cone_fish_1 = new fishes("games/game2/assets/3D/Cone/Cone_Squid.png", 'Cone');
+        this.cube_fish_1 = new fishes("games/game2/assets/3D/Cube/Cube_Fish.png", 'Cube');
+        this.cuboid_fish_1 = new fishes("games/game2/assets/3D/Cuboid/Cuboid_Fish.png", 'Cuboid');
+        this.cylinder_fish_1 = new fishes("games/game2/assets/3D/Cylinder/Cylinder_Dolphin.png", 'Cylinder');
+        this.sphere_fish_1 = new fishes("games/game2/assets/3D/Sphere/Sphere_Blowfish.png", 'Sphere');
 
         this.shape_array = ["Cone", "Cube", "Cuboid", "Cylinder", "Sphere"];
 
@@ -111,15 +111,32 @@ class Game2QuestionAnswerGenerator
             let option_set = [];
             option_set.push(this.answers[i]);
 
-            for(let j = 0; j < 4; ++j)
+            if(this.answers[i] == "Sphere")
             {
-                if(option_set[0] == this.shape_array[j])
+                for(let j = 0; j < 3; ++j)
                 {
-                    continue;
+                    if(option_set[0] == this.shape_array[j])
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        option_set.push(this.shape_array[j]);
+                    }
                 }
-                else
+            }
+            else
+            {
+                for(let j = 0; j < 4; ++j)
                 {
-                    option_set.push(this.shape_array[j]);
+                    if(option_set[0] == this.shape_array[j])
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        option_set.push(this.shape_array[j]);
+                    }
                 }
             }
 

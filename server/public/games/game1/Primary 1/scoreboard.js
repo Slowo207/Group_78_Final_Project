@@ -22,14 +22,14 @@ class Scoreboard
     {
         push();
 
-        image(this.notice_background, width/3-25, height/8 + 10);
+        image(this.notice_background, width/2 - this.notice_background.width/2, height/5);
 
         stroke(0);
         textAlign(CENTER,CENTER);
-        textSize(25);
-        text("Questions remaining:", width/2+2, height/3+17);
+        textSize(20);
+        text("Questions remaining:", width/2+2, height/4 + 25);
         textSize(50);
-        text(this.remaining_questions + "/" + this.amt_of_questions, width/2, height/3 + 60);
+        text(this.remaining_questions + "/" + this.amt_of_questions, width/2, height/3 - 7);
         pop();
     }
 }
