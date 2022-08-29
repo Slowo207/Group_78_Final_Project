@@ -11,61 +11,61 @@ module.exports = function(app) {
 
     app.get("/",function(req, res){
         res.render("index.html", {
-            title: "Dynamic title"
+            title: "Mathquarium"
         });
     });
     app.get("/grades",function(req, res){
         res.render("grades.html", {
-            title: "Dynamic title"
+            title: "Grades"
         });
     });
     app.get("/gameslideshow",function(req, res){
         res.render("gameslideshow.html", {
-            title: "Dynamic title"
+            title: "Games"
         });
     });
     app.get("/levels",function(req, res){
         primary = 1
         res.render("levels.html", {
-            title: "Dynamic title"
+            title: "Levels"
         });
     });
 
     app.get("/g1gamehostingp1",function(req, res){
         primary = 1
         res.render("g1gamehostingp1.html", {
-            title: "Dynamic title"
+            title: "Fishing Race"
         });
     });
     app.get("/g1gamehostingp2",function(req, res){
         primary = 1
         res.render("g1gamehostingp2.html", {
-            title: "Dynamic title"
+            title: "Fishing Race"
         });
     });
     app.get("/g1gamehostingp3",function(req, res){
         primary = 1
         res.render("g1gamehostingp2.html", {
-            title: "Dynamic title"
+            title: "Fishing Race"
         });
     });
 
     app.get("/g2gamehostingp1",function(req, res){
         primary = 1
         res.render("g2gamehostingp1.html", {
-            title: "Dynamic title"
+            title: "Fish Shapes"
         });
     });
     app.get("/g2gamehostingp2",function(req, res){
         primary = 1
         res.render("g2gamehostingp2.html", {
-            title: "Dynamic title"
+            title: "Fish Shapes"
         });
     });
     app.get("/g2gamehostingp3",function(req, res){
         primary = 1
         res.render("g2gamehostingp3.html", {
-            title: "Dynamic title"
+            title: "Fish Shapes"
         });
     });
 
@@ -74,13 +74,13 @@ module.exports = function(app) {
         game = 3 
         grade = 1
         res.render("g3gamehosting.html", {
-            title: "Dynamic title"
+            title: "Fish Market"
         });
     });
 
     app.get("/about",function(req, res){
         res.render("about.html", {
-            title: "Dynamic title"
+            title: "About"
         });
     });
 
@@ -92,11 +92,23 @@ module.exports = function(app) {
         console.log(rows)
 
         res.render("scoreBoard.html", {
-            title: "Dynamic title",
+            title: "ScoreBoard",
             rows: rows
         });
         dBSp.closedb(db)
     });
+
+    app.get("/facebook", function(req, res){
+        res.redirect("https://www.facebook.com/")
+    })
+
+    app.get("/twitter", function(req, res){
+        res.redirect("https://www.twitter.com/")
+    })
+
+    app.get("/instagram", function(req, res){
+        res.redirect("https://www.instagram.com/")
+    })
 
     app.post("/addEntry", function(req, res){
         // if(req.body.game == 3){
