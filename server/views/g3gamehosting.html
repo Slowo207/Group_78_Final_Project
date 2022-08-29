@@ -21,24 +21,61 @@
     <h1 class="gameh1">Fish Market</h1>
     <div class="game-container">
         <div class="content" id="game3p1"></div>
-        <!-- <div class="scoreboard">
+        <div class="scoreboard">
             <div id="table">
                 <div id="columnNames">
 
                 </div>
                 <div id="rows"></div>
             </div>
+
             <form method="post" action="/addEntry">
                 <input id="game" type="hidden" value="0" name= "game">
                 <input id="grade" type="hidden" value="0" name="grade">
-                <div id="addEntry">
-                    <input id="name" type="text" name="name">
+                <div id="username">
+                    <input id="username_input" type="text" name="name" value="" placeholder="Enter Username">
+                </div>
+                <div id="score">
+                    <input id="score_input" type="text" name="name">
+                </div>
+                <div id="time">
+                    <input id="time_input" type="text" name="name">
                 </div>
                 <div id="submitButton-container">
-                    <input type="submit" value="Create">
+                    <input id="submitButton" type="submit" value="Create">
                 </div>
             </form>
+
+            
+
+            <!-- <script>
+                function yes(){
+                    console.log(window.location.pathname)
+                }
+            </script>
+
+            <script type="module"> 
+                import * as dbMods from "../js/databaseManager.js"
+
+            </script> -->
+
+
+            <!-- <script>
+                function addEntry(){
+                    console.log(document.getElementById("username_input").value)
+                    databaseName = "g" + localStorage.getItem('game') + "p" + localStorage.getItem('grade')
+                    db = dBSp.opendb(databaseName)
+
+                    dBSp.createdb(db, databaseName)
+
+                    dBSp.closedb(db)
+                }
+            </script> -->
+
             <div id="levelButtons">
+                <form method="get" action="/scoreboard">
+                    <input type="submit" value="ScoreBoard">
+                </form>
                 <div id="previousLevel">
                     <a>
                         <button type="button">opendb</button>
@@ -46,7 +83,7 @@
                 </div>
                 <div id="restartLevel">
                     <a>
-                        <button type="button">RestartLevel</button>
+                        <button type="button">CreateDB</button>
                     </a>
                 </div>
                 <div id="nextLevel">
@@ -55,13 +92,12 @@
                     </a>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div> 
 
     <div w3-include-html="/templates/footer.html"></div>
 
     <script src="/js/includehtml.js"></script>
-    <script src="/js/database.js"></script>
     <script>
         includeHTML();
     </script>

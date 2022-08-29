@@ -64,6 +64,7 @@ i {
     width: 800px;
     margin: auto;
     position: relative;
+    border: black 1px solid;
 }
 
 .gameh1 {
@@ -123,3 +124,4 @@ i {
 input:focus::placeholder {
     color: transparent;
 }
+

@@ -1,5 +1,5 @@
-const dBSp = require("../db/database")
-
+const e = require('express')
+var dBSp = require('../db/database')
 
 module.exports = function(app) {
 
@@ -84,7 +84,35 @@ module.exports = function(app) {
         });
     });
 
-//     app.post("/addEntry", function(req, res){
-//         db = dBSp.opendb("g" + req.body.game + "p" + req.body.grade)
-//     })
+    app.get("/scoreboard",function(req, res){
+        databaseName = "g" + req.body.game + "p" + req.body.grade
+        db = dBSp.opendb(databaseName)
+        console.log(db)
+        rows = dBSp.queryEntrys(db, databaseName)
+        console.log(rows)
+
+        res.render("scoreBoard.html", {
+            title: "Dynamic title",
+            rows: rows
+        });
+        dBSp.closedb(db)
+    });
+
+    app.post("/addEntry", function(req, res){
+        // if(req.body.game == 3){
+        //     res.redirect("g" + req.body.game + "gamehosting")
+        // }else{
+        //     res.redirect("g" + req.body.game + "gamehosting" + req.body.grade + ".html")
+        // }
+        console.log('hello')
+        // databaseName = "g" + req.body.game + "p" + req.body.grade
+        // db = dBSp.opendb(databaseName)
+
+        // dBSp.createdb(db, databaseName)
+
+        // dBSp.closedb(db)
+
+        res.redirect("scoreBoard")
+
+    })
 }
