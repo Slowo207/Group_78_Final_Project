@@ -4,6 +4,7 @@ var fishInLevel = 5
 
 var registerArray = []
 var changeArray = []
+var endButtonArray = []
 
 var level = Number(localStorage.getItem('level'));
 var primary = Number(localStorage.getItem('grade')) - 1;
@@ -68,6 +69,35 @@ function setup() {
   priceTag = loadImage('games/game3/assets/PriceTag.png')
 
   paidNote = loadImage('games/game3/assets/NotePaid.png')
+  
+  //loading background image
+  backgoundImage = loadImage('games/game3/assets/image0.jpg')
+
+  //loading score images
+  correctImg = loadImage('games/game3/assets/HappyFace.png')
+  wrongImg = loadImage('games/game3/assets/SadFace.png')
+
+  textAlign(CENTER)
+  correctImg = loadImage('games/game3/assets/HappyFace.png')
+  wrongImg = loadImage('games/game3/assets/SadFace2.png')
+
+  speachBubbleImg = loadImage('games/game3/assets/SpeechBubble.png')
+
+  startButtonImg = loadImage('games/game3/assets/start-button.png')
+}
+
+function resetGame(){
+  fishArray = []
+  scoreArray = []
+  endButtonArray = []
+  registerArray = []
+  changeArray = []
+  passed = false
+  fish = 0
+  cost = 0
+  change = 0 
+  gameState = 0
+  score = 0
 
   //loading register box
   //(id, x, y, width, height, cost, asset, assetHeight, offset, scale, textOffsetX, textOffsetY)
@@ -101,33 +131,6 @@ function setup() {
     changeArray.push(new Change(120 +65*3, 270, 65, 60, 0.05, 0, "CentExtra.png", 20, 20, "Coin"))
   }
 
-  //console.log("loaded change")
-  
-  //loading background image
-  backgoundImage = loadImage('games/game3/assets/image0.jpg')
-
-  //loading score images
-  correctImg = loadImage('games/game3/assets/HappyFace.png')
-  wrongImg = loadImage('games/game3/assets/SadFace.png')
-
-  textAlign(CENTER)
-  correctImg = loadImage('games/game3/assets/HappyFace.png')
-  wrongImg = loadImage('games/game3/assets/SadFace2.png')
-
-  speachBubbleImg = loadImage('games/game3/assets/SpeechBubble.png')
-
-  startButtonImg = loadImage('games/game3/assets/start-button.png')
-}
-
-function resetGame(){
-  fishArray = []
-  scoreArray = []
-  fish = 0
-  cost = 0
-  change = 0 
-  gameState = 0
-  score = 0
-  
 
   console.log("Primary: " + (primary + 1) + ", level: " + (level + 1))
 
@@ -280,12 +283,48 @@ function gamePage(){
 
 function endPage(){
   //image(backgoundImage, 0, 0, 800, 800)
+  fill('#A3A1B0')
+  rect(250, 200, 300, 400)
+
+  push()
+  textAlign(CENTER)
+  // rect(250, 525, 150, 75)
+  // fill("black")
+  // text("Restart", 325, 570)
+
+  // noFill()
+  // rect(400, 525, 150, 75)
+  // fill("black")
+  // text("Next", 475, 570)
+
+  fill("black")
+  text("Primary: " + primary + ", Level: " + (level + 1), 400, 245)
+
+  text("Score: " + score + "/" + fishInLevel, 400, 300)
+  if(score > 2){
+    image(correctImg, 350, 325, 100, 100)
+  }else{
+    image(wrongImg, 350, 325, 100, 100)
+  }
+
+  if(endButtonArray.length == 3){
+    textSize(24)
+  }
+  
+  for(let i=0; i<endButtonArray.length; i++){
+    //console.log(endButtonArray)
+    endButtonArray[i].draw()
+  }
+
+  pop()
+
+
   textSize(32)
   fill("black")
-  text("End", 400, 350)
-  text(score, 370, 300)
-  noFill()
-  rect(300, 300, 200, 100)
+  // text("End", 400, 350)
+  // text(score, 370, 300)
+  // noFill()
+  // rect(300, 300, 200, 100)
 }
 
 function mouseClicked(){
@@ -324,6 +363,10 @@ function mouseClicked(){
       change = 0
       fish += 1
       if(fish > fishArray.length -1){
+        if(score >= 3){
+          passed = true
+        }
+        endButtonCreation()
         gameState = 2
       }
     //Remove Change logic
@@ -336,14 +379,36 @@ function mouseClicked(){
       }
     }
   }else if (gameState == 2){
-    console.log("endGame1")
-    if((mouseX > 300 && mouseX < 500) && (mouseY > 300 && mouseY < 400)){
-      endBGM()
-      console.log("end")
-      gameState = 0
-      resetGame()
+    //console.log("endGame1")
+    // if((mouseX > 300 && mouseX < 500) && (mouseY > 300 && mouseY < 400)){
+    //   endBGM()
+    //   console.log("end")
+    //   gameState = 0
+    //   resetGame()
+    // }
+    for(i=0; i <endButtonArray.length; i++){
+      endButtonArray[i].clicked()
     }
   }
+}
+
+function endButtonCreation(){
+  if(level > 0){
+    endButtonArray.push(new EndScreen("Previous"))
+  }
+
+  endButtonArray.push(new EndScreen("Restart"))
+
+  if(passed == true && level < 4){
+    endButtonArray.push(new EndScreen("Next"))
+  }
+
+
+  for(let i=0; i < endButtonArray.length; i++){
+    endButtonArray[i].x = 250 + i*(300/endButtonArray.length)
+    endButtonArray[i].width = 300/endButtonArray.length
+  }
+
 }
 
 //Math Logic Functions 

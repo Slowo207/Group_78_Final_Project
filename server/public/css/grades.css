@@ -16,8 +16,10 @@
 /* overall html */
 body {
     position: relative;
-    height: 1000px;
-    background-image: linear-gradient(#6EB5FF 0%, #007DFF 100%);
+    padding-bottom: 8%;
+    height: fit-content;
+    min-height: 100vh;
+    background-image: url('/assets/background-image.jpg');
     background-size: cover;
     font-family: sass;
 }
@@ -53,9 +55,8 @@ a:active {
 }
 
 
-i {
-    margin-right: 10px;
-    margin-left: 50px;
+nav i {
+    margin-left: 64px;
 }
 
 /* grades portion */
@@ -115,7 +116,7 @@ i {
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 7%;
+    height: fit-content;
     background-color: #98D4FF;
     color: black;
     text-align: center;

@@ -15,7 +15,9 @@
 /* overall html */
 body {
     position: relative;
-    min-height: 1000px;
+    padding-bottom:8%;
+    height: fit-content;
+    min-height: 100vh;
     background-image: linear-gradient(#6EB5FF 0%, #007DFF 100%);
     background-size: cover;
     font-family: sass;
@@ -52,15 +54,15 @@ a:active {
 }
 
 
-i {
-    margin-right: 10px;
-    margin-left: 50px;
+nav i {
+    margin-left: 64px;
 }
 
 
 /* body*/
 #bodymain {
-
+    margin:0;
+    padding: 0%;
     background-image: url('/assets/aquarium.gif');
     background-repeat: no-repeat;
     image-rendering: pixelated;
@@ -72,7 +74,7 @@ i {
 
 .homeh1 {
     text-align: center;
-    margin: 200px auto;
+    margin: 200px auto 100px auto;
     font-size: 80px;
     width: fit-content;
     background-color: #228aff;
@@ -83,24 +85,25 @@ i {
 }
 
 #play_button_homepage{
-    text-align: center;
-    margin: auto;
+        text-align: center;
+        margin: auto;
 }
 
 .play_button {
     background-color: #9BE7FF;
     border: solid 2px #2e73a1;
     color: black;
-    width: 40vw;
-    height: 100px;
+    width: 200px;
+    height: 80px;
     border-radius: 10vh;
-    padding: 16px 32px;
     font-size: 16px;
     cursor: pointer;
     position: relative;
 }
 .play_button:hover {
     background-color: #7ec9ff;
+    font-size: 20px;
+    font-weight:bold;
 }
 
 #footer {
@@ -108,7 +111,7 @@ i {
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 7%;
+    height: fit-content;
     background-color: #98D4FF;
     color: black;
     text-align: center;

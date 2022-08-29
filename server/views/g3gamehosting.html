@@ -13,15 +13,10 @@
 <body onload="setIDs()">
     <div w3-include-html="/templates/navbar.html"></div>
 
-    <div id="exit-button-div">
-        <a href="grades.html">
-            <button type="button" class="exit-button" type="button"><i class="bi bi-door-closed"></i></button>
-        </a>
-    </div>
     <h1 class="gameh1">Fish Market</h1>
     <div class="game-container">
         <div class="content" id="game3p1"></div>
-        <div class="scoreboard">
+        <!-- <div class="scoreboard">
             <div id="table">
                 <div id="columnNames">
 
@@ -44,7 +39,7 @@
                 <div id="submitButton-container">
                     <input id="submitButton" type="submit" value="Create">
                 </div>
-            </form>
+            </form> -->
 
             
 
@@ -72,7 +67,7 @@
                 }
             </script> -->
 
-            <div id="levelButtons">
+            <!-- <div id="levelButtons">
                 <form method="get" action="/scoreboard">
                     <input type="submit" value="ScoreBoard">
                 </form>
@@ -92,8 +87,14 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div> 
+
+    <div id="exit-button-div">
+        <a href="/gameslideshow">
+            <button type="button" class="exit-button" type="button">Exit</button>
+        </a>    
+    </div>
 
     <div w3-include-html="/templates/footer.html"></div>
 
@@ -102,22 +103,22 @@
         includeHTML();
     </script>
 
-    <script src="/games/game3/lib/p5.min.js"></script>
-    <script src="/games/game3/lib/p5.dom.js"></script>
-    <script src="/games/game3/lib/p5.sound.min.js"></script> 
-
+    <script src="/games/p5js/p5.min.js"></script>
+    <script src="/games/p5js/p5.dom.js"></script>
+    <script src="/games/p5js/p5.sound.min.js"></script>
     
     <script src="/games/game3/sketch.js"></script>
 
+    <script src="/games/game3/endScreen.js"></script>
     <script src="/games/game3/fish.js"></script>
     <script src="/games/game3/change.js"></script>
     <script src="/games/game3/register.js"></script>
-    <script>
+    <!-- <script>
         function setIDs(){
             document.getElementById('game').value = localStorage.getItem('game')
             document.getElementById('grade').value = localStorage.getItem('grade')
         }
-    </script>
+    </script> -->
 </body>
 
 

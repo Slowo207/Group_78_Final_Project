@@ -13,14 +13,14 @@
 <body>
     <div w3-include-html="/templates/navbar.html"></div>
 
-    <div id="exit-button-div">
-        <a href="grades.html">
-            <button type="button" class="exit-button" type="button"><i class="bi bi-door-closed"></i></button>
-        </a>
-    </div>
     <h1 class="gameh1">Fishing Race</h1>
     <div class="game-container">
         <div class="content" id="game2p2"></div>
+    </div>
+    <div id="exit-button-div">
+        <a href="/gameslideshow">
+            <button type="button" class="exit-button" type="button">Exit</button>
+        </a>    
     </div>
 
     <div w3-include-html="/templates/footer.html"></div>
@@ -30,10 +30,10 @@
         includeHTML();
     </script>
 
-    <script src="/games/game2/Primary 2/lib/p5.min.js"></script>
-    <script src="/games/game2/Primary 2/lib/p5.dom.js"></script>
-    <script src="/games/game2/Primary 2/lib/p5.sound.min.js"></script>
-    
+    <script src="/games/p5js/p5.min.js"></script>
+    <script src="/games/p5js/p5.dom.js"></script>
+    <script src="/games/p5js/p5.sound.min.js"></script>    
+
     <script src="/games/game2/Primary 2/sketch.js"></script>
     
     <script src="/games/game2/Primary 2/Game2QuestionsAnswersGenerator.js"></script>
