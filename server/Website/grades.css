@@ -89,6 +89,7 @@ nav i {
     width: 68vw;
     height: 130px;
     place-items: center;
+    font-family: sass;
 }
 
 .grid-item #p1:hover {

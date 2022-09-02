@@ -103,6 +103,7 @@ a.disabled {
     border-radius: 25px;
     padding: 5vw;
     place-items: center;
+    font-family: sass;
 }
 
 .grid-item #p1:hover {
@@ -119,6 +120,7 @@ a.disabled {
     border-radius: 25px;
     padding: 5vw;
     place-items: center;
+    font-family: sass;
 }
 
 .grid-item #p2:hover {
@@ -135,6 +137,7 @@ a.disabled {
     border-radius: 25px;
     padding: 5vw;
     place-items: center;
+    font-family: sass;
 }
 
 .grid-item #p3:hover {
